@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="fde3262e-f99b-4adf-888d-898bea435c75" name="VideoTechA" url="http://ftp.videotecha.altervista.org">
+      <webServer id="d33f90ff-714d-42e6-b185-6e878758e17d" name="videotecha" url="http://ftp.videotecha.altervista.org">
         <fileTransfer host="ftp.videotecha.altervista.org" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
