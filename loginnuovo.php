@@ -13,7 +13,7 @@
 
 
     <!-- Bootstrap core CSS -->
-    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link  rel="stylesheet" href = "src/css/bootstrap.min.css">
 
     <style>
         .bd-placeholder-img {
@@ -33,7 +33,7 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
+    <link rel="stylesheet" href="src/css/signin.css">
 </head>
 <body class="text-center">
 

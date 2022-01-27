@@ -3,7 +3,7 @@
 <head>
     <title>Registrazione</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
 <form method="post" action="registrazione.php">
