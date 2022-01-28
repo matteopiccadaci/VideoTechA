@@ -1,5 +1,5 @@
-###Progetto Basi di Dati
-##VideoTech-A
+### Progetto Basi di Dati
+## VideoTech-A
 
 _Studenti:_
 Matteo Piccadaci [514430]
