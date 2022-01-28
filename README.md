@@ -1,4 +1,4 @@
-### Progetto Basi di Dati
+# Progetto Basi di Dati
 ## VideoTech-A
 
 _Studenti:_
