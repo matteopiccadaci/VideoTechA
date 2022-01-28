@@ -1,4 +1,4 @@
-<center># Progetto Basi di Dati</center>
+<p align="center"># Progetto Basi di Dati</p>
 ## VideoTech-A
 
 _Studenti:_
