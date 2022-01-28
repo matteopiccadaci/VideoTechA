@@ -2,8 +2,7 @@
 ## VideoTech-A
 
 _Studenti:_
-Matteo Piccadaci [514430]
-Antonino Mastronardo [513936]
+Matteo Piccadaci [514430] e Antonino Mastronardo [513936]
 
 
 Si vuole realizzare una base di dati per una videoteca, il cui locale fisico è accessibile dal lunedì al sabato, dalle ore 8:30 alle ore 19:30.
