@@ -1,7 +1,7 @@
 ###Progetto Basi di Dati
 ##VideoTech-A
 
-Studenti:
+_Studenti:_
 Matteo Piccadaci [514430]
 Antonino Mastronardo [513936]
 
