@@ -1,0 +1,13 @@
+{
+  "name": "vendor_name/VideoTechA",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "matteopiccadaci",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {"almasaeed2010/adminlte=~2.4*"}
+}

@@ -32,7 +32,7 @@ $cognome=$arr['cognome'];
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="padding-left: 48px">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -90,16 +90,17 @@ $cognome=$arr['cognome'];
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4 " style="width = 600px">
+    <aside class="main-sidebar sidebar-dark-primary" style="width: 290px;">
         <!-- Brand Logo -->
         <a href="index.php" class="brand-link">
             <span class="brand-text font-weight-light">VideoTech-A</span>
         </a>
 
         <!-- Sidebar -->
-        <div class="sidebar">
+        <div class="sidebar" style="width: 290px; padding-bottom: 10px">
             <!-- Sidebar user panel (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex bi bi-person-circle">
+            <div class="user-panel mt-4 pb-3 mb-4 d-flex">
+                <i class="bi bi-person-circle" style="font-size: 40px"></i>
                 <div class="info">
                     <?php if(isset($_SESSION['id'])){
                     echo "$nome $cognome";}
@@ -113,9 +114,10 @@ $cognome=$arr['cognome'];
             <!-- SidebarSearch Form -->
             <div class="form-inline">
                 <div class="input-group" data-widget="sidebar-search">
-                    <input class="form-control form-control-sidebar" type="search" placeholder="Cerca qui..." aria-label="Search">
+                    <input class="form-control form-control-sidebar" type="search" placeholder="Cerca qui" aria-label="Search">
                     <div class="input-group-append">
                         <button class="btn btn-sidebar">
+                            <i class="bi bi-search"></i>
                             <i class="fas fa-search fa-fw"></i>
                         </button>
                     </div>
@@ -155,7 +157,7 @@ $cognome=$arr['cognome'];
 
 
                     <li class="nav-item">
-                        <a href="pages/calendar.html" class="nav-link">Link catalogo
+                        <a href="pages/calendar.html" class="nav-link" style="width: 270px">Link catalogo
                             <i class="nav-icon fas fa-calendar-alt"></i>
                             <i class="bi bi-list me-1"></i>
                             <p>
@@ -167,7 +169,7 @@ $cognome=$arr['cognome'];
 
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="#" class="nav-link" style="width: 270px">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
                                 <i class="bi bi-people me-1"></i>
@@ -175,18 +177,18 @@ $cognome=$arr['cognome'];
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
+                        <ul class="nav nav-treeview" >
+                            <li class="nav-item" >
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p class="nav-link" style="font-size: 13">matteo.piccadaci@videotecha.org </p>
+                                    <p class="nav-link" style="font-size: 14; width: 270px" >matteo.piccadaci@videotecha.org </p>
                             </li>
                             <li class="nav-item">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p class="nav-link" style="font-size: 13">antonino.mastronardo@videotecha.org</p>
+                                    <p class="nav-link" style="font-size: 14; width: 270px";>antonino.mastronardo@videotecha.org</p>
                             </li>
                             <li class="nav-item">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p class="nav-link" style="font-size: 13">Tel: 0806623056</p>
+                                <p class="nav-link" style="font-size: 14; width: 270px">Tel: 0806623056</p>
                             </li>
                         </ul>
                     </li>
@@ -200,20 +202,30 @@ $cognome=$arr['cognome'];
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
 
-        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                   <img src="src/immagini/road_to_revolution.jpg" class="d-block w-50" alt="s">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="padding-left: 250px;  padding-top: 40px;">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="src/immagini/avengers.jpg" class="d-block w-75" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="src/immagini/road_to_revolution.jpg" class="d-block w-75" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="src" class="d-block w-75" alt="...">
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
-                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
+
         </div>
-                        </div>
+
 
     <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->
@@ -221,7 +233,7 @@ $cognome=$arr['cognome'];
     <!-- /.control-sidebar -->
 
     <!-- Main Footer -->
-    <footer class="main-footer">
+    <footer class="main-footer" style="padding-left: 50px">
         <strong>Copyright &copy; 2022 Piccadaci & Mastronardo
         All rights reserved. - Corso Alice de Gasperi 52, Bari (BA)
         <div class="float-right d-none d-sm-inline-block">
