@@ -10,4 +10,6 @@
     echo "<link rel='stylesheet' href ='../src/css/style.css'>";
     echo "<script src='https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js'></script>";
     echo "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css'>";
+    echo "<link rel='stylesheet' href='../src/css/bootstrap.css'>";
+
 ?>
