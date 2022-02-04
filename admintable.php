@@ -1,15 +1,17 @@
 <?php
-require_once('php/cofig.php');
+require_once ('php/cofig.php');
 session_start();
 $id=$_SESSION['id'];
-$querynome="SELECT nome, cognome
-FROM Clienti
-WHERE id_cliente='$id'";
-$res=$connex_db->query($querynome);
+$queryadmin="SELECT nome, cognome, mail
+FROM Amministratori
+WHERE id_amministratore='$id'";
+$res=$connex_db->query($queryadmin);
 $arr=mysqli_fetch_array($res, MYSQLI_ASSOC);
 $nome=$arr['nome'];
 $cognome=$arr['cognome'];
+$mail=$arr['mail'];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,39 +44,19 @@ $cognome=$arr['cognome'];
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
+
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="index.php" class="nav-link bi bi-house me-1"> Home</a>
+                <a href="homeadmin.php" class="nav-link bi bi-house me-1"> Home</a>
             </li>
-            <?php
-            if(isset($_SESSION['id'])){
-                echo'<li class="nav-item d-none d-sm-inline-block">
-                <a href="index.php" class="nav-link bi bi-cart me-1"> Carrello</a>
-            </li>';}
-            ?>
-
-            <form class="">
-                <?php
-
+            <form class=""><?php
                 if(isset($_SESSION['id'])){
                     echo '<li class="nav-item d-none d-sm-inline-block">
                 <a href="logout.php" class="nav-link bi bi-box-arrow-left me-1"> Logout</a>
-            </li>';
-                }
-                else{
-                    echo '<li class="nav-item d-none d-sm-inline-block">
-                <a href="loginclienti.php" class="nav-link bi bi-box-arrow-in-right me-1"> Login</a>
-            </li>';
-
-                }
-                ?>
-                <?php
-                if (isset($_SESSION['id'])) {
-                    echo '<li class="nav-item d-none d-sm-inline-block">
-                <a href="fedelta.php" class="nav-link bi bi-box-arrow-in-right me-1"> Iscriviti al programma fedeltà</a>
-            </li>';
-                }
-                ?>
-            </form>
+            </li>';}
+                ?></form>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="nuovoadmin.php" class="nav-link bi bi-person-plus-fill me-1"> Inserisci un nuovo amministratore</a>
+            </li>
 
         </ul>
 
@@ -115,22 +97,11 @@ $cognome=$arr['cognome'];
         <div class="sidebar" style="width: 290px; padding-bottom: 10px">
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-4 pb-3 mb-4 d-flex">
-                <i class="bi bi-person-circle" style="font-size: 40px"></i>
+                <i class="bi bi-person-workspace" style="font-size: 40px"></i>
                 <div class="info">
-
-                    <?php if(isset($_SESSION['id'])) {
-                        echo "<div style='font-size: 19px'>$nome $cognome</div>";
-                        $queryfed = "SELECT *
-                    FROM Fedelta
-                    WHERE cliente='" . $_SESSION['id'] . "'";
-
-                        if($arrfed=$connex_db->query($queryfed)){
-                        echo "<div style='font-size: 13px'>Cliente fedele  <i class='bi bi-postcard'></i></div>";
-                        }
-                    }
-                    else{
-                        echo "Ospite";
-                    }
+                    <?php
+                    echo "<div style='font-size: 19px'>$nome $cognome</div>";
+                    echo "<div style='font-size: 14px'>Amministratore</div>";
                     ?>
                 </div>
             </div>
@@ -152,13 +123,13 @@ $cognome=$arr['cognome'];
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-                            <?php if(isset($_SESSION['id'])){
-                                echo ' <li class="nav-item">
+                    <?php if(isset($_SESSION['id'])){
+                        echo ' <li class="nav-item">
                                         <a href="#" class="nav-link">
                                             <i class="nav-icon fas fa-copy"></i>
                                                      <p>
                                                 <i class="bi bi-bag me-1"></i>
-                                                I tuoi acquisti
+                                                Movimenti
                                                 <i class="fas fa-angle-left right"></i>
                                             </p>
                                             </a>
@@ -176,8 +147,8 @@ $cognome=$arr['cognome'];
                                                 </a>
                                             </li>
                                         </ul>
-                                    </li>' ;}
-                            ?>
+                                    </li>';}
+                    ?>
 
 
                     <li class="nav-item">
@@ -199,34 +170,18 @@ $cognome=$arr['cognome'];
                             </p>
                         </a>
                     </li>
-                </ul>
 
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
-                        <a href="#" class="nav-link" style="width: 270px">
-                            <i class="nav-icon fas fa-copy"></i>
+                        <a href="admintable.php" class="nav-link" style="width: 270px">
+                            <i class="nav-icon fas fa-calendar-alt"></i>
+                            <i class="bi bi-person-rolodex me-1"></i>
                             <p>
-                                <i class="bi bi-people me-1"></i>
-                                    Contatti
-                                <i class="fas fa-angle-left right"></i>
+                                Amministratori
                             </p>
                         </a>
-                        <ul class="nav nav-treeview" >
-                            <li class="nav-item" >
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p class="nav-link" style="font-size: 14; width: 270px" >matteo.piccadaci@videotecha.org </p>
-                            </li>
-                            <li class="nav-item">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p class="nav-link" style="font-size: 14; width: 270px";>antonino.mastronardo@videotecha.org</p>
-                            </li>
-                            <li class="nav-item">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p class="nav-link" style="font-size: 14; width: 270px">Tel: 0806623056</p>
-                            </li>
-                        </ul>
                     </li>
                 </ul>
+
             </nav>
             <!-- /.sidebar-menu -->
         </div>
@@ -234,56 +189,45 @@ $cognome=$arr['cognome'];
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="padding-left: 55px">
 
-                <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" style="padding-left: 250px;  padding-top: 40px;">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="src/immagini/road_to_revolution.jpg" class="d-block w-75" alt="A">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="src/immagini/human.jpg" class="d-block w-75" alt="B">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="src/immagini/spiderman.jpg" class="d-block w-75" alt="C">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="src/immagini/dark.jpg" class="d-block w-75" alt="C">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="src/immagini/21st.jpg" class="d-block w-75" alt="C">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="src/immagini/Pulp-Fiction-2.jpg" class="d-block w-75" alt="C">
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev" style="filter: invert(100%)">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next" style="filter: invert(100%)">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
+        <?php
+        $queryalladmin="SELECT id_amministratore, nome, cognome, mail
+FROM Amministratori";
+        $res2=$connex_db->query($queryalladmin);
+        $arr2=mysqli_fetch_array($res2, MYSQLI_ASSOC);
+        echo '<table class="table table-hover"; width: 900px">
+<thead>
+<tr>
+<th scope="col" > ID</th>
+<th scope="col"> NOME </th>
+<th scope="col"> COGNOME</th>
+<th scope="col">MAIL</th>
+<th scope="col">MODIFICA</th>
+<th scope="col">ELIMINA</th>
+</tr>
+</thead>
+';
+        if($res2=$connex_db->query($queryalladmin)){
+            while($arr2=mysqli_fetch_array($res2, MYSQLI_ASSOC)) {
+                echo "<tr><th scope='row'>" . $arr2['id_amministratore'] . "</th><th scope='row'>" .$arr2['nome']. "</th><th scope='row'>" . $arr2['cognome'] . "</th><th scope='row' style='alignment: center'>" . $arr2['mail'] . "</th>
+                          <th scope='row' style='alignment: right'> <button type='submit' name='modifica'></button>
+                           </th> <th scope='row' style='alignment: right'><button type='submit' name='eliminare'></button></th></tr>";
+            }
+            $res2->free();
+        }
 
-        </div>
+        ?>
+    </div>
+
 
 
     <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
+
     </aside>
     <!-- /.control-sidebar -->
 
     <!-- Main Footer -->
-    <footer class="main-footer" style="padding-left: 50px">
-        <strong>Copyright &copy; 2022 Piccadaci & Mastronardo
-        All rights reserved. - Corso Alice de Gasperi 52, Bari (BA)
-        <div class="float-right d-none d-sm-inline-block">
-            <b>Version</b> 1.0.0
-        </div>
-    </footer>
-</div>
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
@@ -302,4 +246,5 @@ $cognome=$arr['cognome'];
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard3.js"></script>
 </body>
+
 </html>

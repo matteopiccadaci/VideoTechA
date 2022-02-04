@@ -2,13 +2,13 @@
 require_once('php/cofig.php');
 session_start();
 $id=$_SESSION['id'];
-$querynome="SELECT nome, cognome
+$queryiden="SELECT nome, cognome
 FROM Clienti
 WHERE id_cliente='$id'";
-$res=$connex_db->query($querynome);
-$arr=mysqli_fetch_array($res, MYSQLI_ASSOC);
-$nome=$arr['nome'];
-$cognome=$arr['cognome'];
+$res=$connex_db->query($queryiden);
+$credenziali=mysqli_fetch_array($res, MYSQLI_ASSOC);
+$nome=$credenziali['nome'];
+$cognome=$credenziali['cognome'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,9 +42,11 @@ $cognome=$arr['cognome'];
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
+
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="index.php" class="nav-link bi bi-house me-1"> Home</a>
             </li>
+            <form class="">
             <?php
             if(isset($_SESSION['id'])){
                 echo'<li class="nav-item d-none d-sm-inline-block">
@@ -52,7 +54,6 @@ $cognome=$arr['cognome'];
             </li>';}
             ?>
 
-            <form class="">
                 <?php
 
                 if(isset($_SESSION['id'])){
@@ -66,15 +67,7 @@ $cognome=$arr['cognome'];
             </li>';
 
                 }
-                ?>
-                <?php
-                if (isset($_SESSION['id'])) {
-                    echo '<li class="nav-item d-none d-sm-inline-block">
-                <a href="fedelta.php" class="nav-link bi bi-box-arrow-in-right me-1"> Iscriviti al programma fedeltà</a>
-            </li>';
-                }
-                ?>
-            </form>
+                ?></form>
 
         </ul>
 
@@ -117,15 +110,15 @@ $cognome=$arr['cognome'];
             <div class="user-panel mt-4 pb-3 mb-4 d-flex">
                 <i class="bi bi-person-circle" style="font-size: 40px"></i>
                 <div class="info">
-
-                    <?php if(isset($_SESSION['id'])) {
+                    <?php
+                    if(isset($_SESSION['id'])) {
                         echo "<div style='font-size: 19px'>$nome $cognome</div>";
                         $queryfed = "SELECT *
                     FROM Fedelta
                     WHERE cliente='" . $_SESSION['id'] . "'";
 
                         if($arrfed=$connex_db->query($queryfed)){
-                        echo "<div style='font-size: 13px'>Cliente fedele  <i class='bi bi-postcard'></i></div>";
+                            echo "<div style='font-size: 13px'>Cliente fedele  <i class='bi bi-postcard'></i></div>";
                         }
                     }
                     else{
@@ -152,8 +145,8 @@ $cognome=$arr['cognome'];
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-                            <?php if(isset($_SESSION['id'])){
-                                echo ' <li class="nav-item">
+                    <?php if(isset($_SESSION['id'])){
+                        echo ' <li class="nav-item">
                                         <a href="#" class="nav-link">
                                             <i class="nav-icon fas fa-copy"></i>
                                                      <p>
@@ -177,7 +170,7 @@ $cognome=$arr['cognome'];
                                             </li>
                                         </ul>
                                     </li>' ;}
-                            ?>
+                    ?>
 
 
                     <li class="nav-item">
@@ -207,18 +200,18 @@ $cognome=$arr['cognome'];
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
                                 <i class="bi bi-people me-1"></i>
-                                    Contatti
+                                Contatti
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview" >
                             <li class="nav-item" >
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p class="nav-link" style="font-size: 14; width: 270px" >matteo.piccadaci@videotecha.org </p>
+                                <i class="far fa-circle nav-icon"></i>
+                                <p class="nav-link" style="font-size: 14; width: 270px" >matteo.piccadaci@videotecha.org </p>
                             </li>
                             <li class="nav-item">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p class="nav-link" style="font-size: 14; width: 270px";>antonino.mastronardo@videotecha.org</p>
+                                <i class="far fa-circle nav-icon"></i>
+                                <p class="nav-link" style="font-size: 14; width: 270px";>antonino.mastronardo@videotecha.org</p>
                             </li>
                             <li class="nav-item">
                                 <i class="far fa-circle nav-icon"></i>
@@ -234,40 +227,98 @@ $cognome=$arr['cognome'];
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="padding-left: 50px">
 
-                <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" style="padding-left: 250px;  padding-top: 40px;">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="src/immagini/road_to_revolution.jpg" class="d-block w-75" alt="A">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="src/immagini/human.jpg" class="d-block w-75" alt="B">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="src/immagini/spiderman.jpg" class="d-block w-75" alt="C">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="src/immagini/dark.jpg" class="d-block w-75" alt="C">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="src/immagini/21st.jpg" class="d-block w-75" alt="C">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="src/immagini/Pulp-Fiction-2.jpg" class="d-block w-75" alt="C">
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev" style="filter: invert(100%)">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next" style="filter: invert(100%)">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
+        <?php
+        $queryutente="SELECT Musicisti.nome_musicista, Album.nome_album, Album.genere_album, Album.anno_pubblicazione,Album.casa_discografica,Album.quantita_copie, Album.prezzo_acquisto
+ FROM Album join Musicisti on Album.musicista = Musicisti.id_musicista
+ ORDER BY Musicisti.nome_musicista";
 
-        </div>
+        $queryguest="SELECT Musicisti.nome_musicista, Album.nome_album, Album.genere_album, Album.anno_pubblicazione,Album.quantita_copie, Album.casa_discografica
+        FROM Album join Musicisti on Album.musicista = Musicisti.id_musicista
+        ORDER BY Musicisti.nome_musicista";
+
+        $queryadmin="SELECT Musicisti.nome_musicista, Album.id_album, Album.nome_album, Album.genere_album, Album.anno_pubblicazione,Album.quantita_copie, Album.casa_discografica
+        FROM Album join Musicisti on Album.musicista = Musicisti.id_musicista
+        ORDER BY Musicisti.nome_musicista";
+
+        $ute=$connex_db->query($queryutente);
+        $gue=$connex_db->query($queryguest);
+        $admin=$connex_db->query($queryadmin);
+        $arrute=mysqli_fetch_array($ute, MYSQLI_ASSOC);
+        $arrgue=mysqli_fetch_array($gue, MYSQLI_ASSOC);
+        $arradmin=mysqli_fetch_array($admin, MYSQLI_ASSOC);
+
+
+        if(isset($_SESSION['id'])){
+
+        echo '<table class="table table-hover"; width: 800px">
+<thead>
+<tr>
+<th scope="col"> ARTISTA </th>
+<th scope="col"> NOME</th>
+<th scope="col">GENERE</th>
+<th scope="col">ANNO</th>
+<th scope="col">CASA DISCOGRAFICA</th>
+<th scope="col">PREZZO ACQUISTO</th>
+<th scope="col">DISPONIBILE</th>
+<th scope="col"> ACQUISTA</th>
+</tr>
+</thead>
+';
+        if($ute=$connex_db->query($queryutente)){
+            while($arrute=mysqli_fetch_array($ute, MYSQLI_ASSOC)) {
+                if($arrute['quantita_copie']>0){
+                    $disp='Disponibilità immediata';
+                }
+                else{
+                    $disp='Non disponibile';
+                }
+                echo "<tr><th scope='row'>" .$arrute['nome_musicista']. "</th><th scope='row'>" . $arrute['nome_album'] . "</th><th scope='row' style='alignment: center'>" . $arrute['genere_album'] . "</th>
+                          <th scope='row'>" . $arrute['anno_pubblicazione'] . "</th>
+                          <th scope='row'>" . $arrute['casa_discografica'] . "</th>
+                          <th scope='row'>" . $arrute['prezzo_acquisto'] . "</th>
+                          <th scope='row'>" . $disp . "</th>
+                           </th> <th scope='row' style='alignment: right'><button type='submit' name='eliminare'></button></th></tr>";
+            }
+            $ute->free();
+        }
+        }
+        else{
+            echo '<table class="table table-hover"; width: 850px">
+<thead>
+<tr>
+<th scope="col"> ARTISTA </th>
+<th scope="col"> NOME</th>
+<th scope="col">GENERE</th>
+<th scope="col">ANNO</th>
+<th scope="col">CASA DISCOGRAFICA</th>
+<th scope="col"> DISPONIBILITÀ</th>
+</tr>
+</thead>
+';
+            if($gue=$connex_db->query($queryutente)){
+                while($arrgue=mysqli_fetch_array($gue, MYSQLI_ASSOC)) {
+                    if($arrgue['quantita_copie']>0){
+                        $disp='Disponibilità immediata';
+                    }
+                    else{
+                        $disp='Non disponibile';
+                    }
+                    echo "<tr><th scope='row'>" .$arrgue['nome_musicista']. "</th><th scope='row'>" . $arrgue['nome_album'] . "</th><th scope='row' style='alignment: center'>" . $arrgue['genere_album'] . "</th>
+                          <th scope='row'>" . $arrgue['anno_pubblicazione'] . "</th>
+                          <th scope='row'>" . $arrgue['casa_discografica'] . "</th>
+                          <th scope='row'>". $disp. "</th>
+                          <th scope='row' style='alignment: right'><button type='submit' name='eliminare'></button></th></tr>";
+                }
+                $gue->free();
+            }
+        }
+        ?>
+    </div>
+
+
+</div>
 
 
     <aside class="control-sidebar control-sidebar-dark">
@@ -276,13 +327,7 @@ $cognome=$arr['cognome'];
     <!-- /.control-sidebar -->
 
     <!-- Main Footer -->
-    <footer class="main-footer" style="padding-left: 50px">
-        <strong>Copyright &copy; 2022 Piccadaci & Mastronardo
-        All rights reserved. - Corso Alice de Gasperi 52, Bari (BA)
-        <div class="float-right d-none d-sm-inline-block">
-            <b>Version</b> 1.0.0
-        </div>
-    </footer>
+
 </div>
 <!-- ./wrapper -->
 

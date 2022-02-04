@@ -1,3 +1,26 @@
+<?php
+require_once('php/cofig.php');
+session_start();
+if (isset($_POST['loginamm'])) {
+    $mail = $_POST['mail'];
+    $password = $_POST['password'];
+    $querypass= "
+SELECT *
+FROM Amministratori
+WHERE mail='$mail'";
+    $result=$connex_db->query($querypass);
+    $arr=mysqli_fetch_array($result, MYSQLI_ASSOC);
+    if (password_verify($password, $arr["password"])){
+        echo  " <script> alert('Benvenuto!') </script> ";
+        header ("location: homeadmin.php");
+        $_SESSION['id']=$arr['id_amministratore'];
+    }
+    else {
+        echo "<script> alert ('Mail o password errate') </script>";
+    }
+}
+
+?>
 <!doctype html>
 <html lang="it">
 <head>
@@ -73,23 +96,3 @@
 </html>
 
 
-<?php
-require_once('php/cofig.php');
-if (isset($_POST['loginamm'])) {
-$mail = $_POST['mail'];
-$password = $_POST['password'];
-$querypass= "
-SELECT *
-FROM Amministratori
-WHERE mail='$mail'";
-$result=$connex_db->query($querypass);
-$arr=mysqli_fetch_array($result, MYSQLI_ASSOC);
-if (password_verify($password, $arr["password"])){
-echo  " <script> alert('Benvenuto!') </script> ";
-}
-else {
-echo "<script> alert ('Mail o password errate') </script>";
-}
-}
-
-?>
