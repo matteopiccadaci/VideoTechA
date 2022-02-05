@@ -232,22 +232,16 @@ $cognome=$credenziali['cognome'];
         <?php
         $queryutente="SELECT Musicisti.nome_musicista, Album.nome_album, Album.genere_album, Album.anno_pubblicazione,Album.casa_discografica,Album.quantita_copie, Album.prezzo_acquisto
  FROM Album join Musicisti on Album.musicista = Musicisti.id_musicista
- ORDER BY Musicisti.nome_musicista";
+ ORDER BY Musicisti.nome_musicista, Album.anno_pubblicazione";
 
         $queryguest="SELECT Musicisti.nome_musicista, Album.nome_album, Album.genere_album, Album.anno_pubblicazione,Album.quantita_copie, Album.casa_discografica
         FROM Album join Musicisti on Album.musicista = Musicisti.id_musicista
-        ORDER BY Musicisti.nome_musicista";
-
-        $queryadmin="SELECT Musicisti.nome_musicista, Album.id_album, Album.nome_album, Album.genere_album, Album.anno_pubblicazione,Album.quantita_copie, Album.casa_discografica
-        FROM Album join Musicisti on Album.musicista = Musicisti.id_musicista
-        ORDER BY Musicisti.nome_musicista";
+        ORDER BY Musicisti.nome_musicista, Album.anno_pubblicazione";
 
         $ute=$connex_db->query($queryutente);
         $gue=$connex_db->query($queryguest);
-        $admin=$connex_db->query($queryadmin);
         $arrute=mysqli_fetch_array($ute, MYSQLI_ASSOC);
         $arrgue=mysqli_fetch_array($gue, MYSQLI_ASSOC);
-        $arradmin=mysqli_fetch_array($admin, MYSQLI_ASSOC);
 
 
         if(isset($_SESSION['id'])){

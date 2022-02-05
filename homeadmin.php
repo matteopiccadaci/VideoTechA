@@ -153,7 +153,7 @@ $mail=$arr['mail'];
 
 
                     <li class="nav-item">
-                        <a href="catalogoalbum.php" class="nav-link" style="width: 270px">
+                        <a href="catalogoalbumadmin.php" class="nav-link" style="width: 270px">
                             <i class="nav-icon fas fa-calendar-alt"></i>
                             <i class="bi bi-list me-1"></i>
                             <p>
@@ -163,7 +163,7 @@ $mail=$arr['mail'];
                     </li>
 
                     <li class="nav-item">
-                        <a href="catalogofilm.php" class="nav-link" style="width: 270px">
+                        <a href="catalogofilmadmin.php" class="nav-link" style="width: 270px">
                             <i class="nav-icon fas fa-calendar-alt"></i>
                             <i class="bi bi-list me-1"></i>
                             <p>

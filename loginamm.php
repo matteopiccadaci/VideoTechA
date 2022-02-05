@@ -75,7 +75,7 @@ WHERE mail='$mail'";
         </div>
 
         <div class="col-12">
-            <h6>Non sei un amministratore? <a href="registrazione.php"> Torna alla pagina d'accesso clienti</a></h6>
+            <h6>Non sei un amministratore? <a href="loginclienti.php"> Torna alla pagina d'accesso clienti</a></h6>
         </div>
         </form>
 

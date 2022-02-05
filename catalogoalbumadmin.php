@@ -3,8 +3,8 @@ require_once('php/cofig.php');
 session_start();
 $id=$_SESSION['id'];
 $queryiden="SELECT nome, cognome
-FROM Clienti
-WHERE id_cliente='$id'";
+FROM Amministratori
+WHERE id_amministratore='$id'";
 $res=$connex_db->query($queryiden);
 $credenziali=mysqli_fetch_array($res, MYSQLI_ASSOC);
 $nome=$credenziali['nome'];
@@ -44,16 +44,13 @@ $cognome=$credenziali['cognome'];
             </li>
 
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="index.php" class="nav-link bi bi-house me-1"> Home</a>
+                <a href="homeadmin.php" class="nav-link bi bi-house me-1"> Home</a>
+            </li>
+
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="nuovoadmin.php" class="nav-link bi bi-person-plus-fill me-1"> Inserisci un nuovo amministratore</a>
             </li>
             <form class="">
-            <?php
-            if(isset($_SESSION['id'])){
-                echo'<li class="nav-item d-none d-sm-inline-block">
-                <a href="index.php" class="nav-link bi bi-cart me-1"> Carrello</a>
-            </li>';}
-            ?>
-
                 <?php
 
                 if(isset($_SESSION['id'])){
@@ -108,22 +105,11 @@ $cognome=$credenziali['cognome'];
         <div class="sidebar" style="width: 290px; padding-bottom: 10px">
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-4 pb-3 mb-4 d-flex">
-                <i class="bi bi-person-circle" style="font-size: 40px"></i>
+                <i class="bi bi-person-workspace" style="font-size: 40px"></i>
                 <div class="info">
                     <?php
-                    if(isset($_SESSION['id'])) {
-                        echo "<div style='font-size: 19px'>$nome $cognome</div>";
-                        $queryfed = "SELECT *
-                    FROM Fedelta
-                    WHERE cliente='" . $_SESSION['id'] . "'";
-
-                        if($arrfed=$connex_db->query($queryfed)){
-                            echo "<div style='font-size: 13px'>Cliente fedele  <i class='bi bi-postcard'></i></div>";
-                        }
-                    }
-                    else{
-                        echo "Ospite";
-                    }
+                    echo "<div style='font-size: 19px'>$nome $cognome</div>";
+                    echo "<div style='font-size: 14px'>Amministratore</div>";
                     ?>
                 </div>
             </div>
@@ -147,34 +133,35 @@ $cognome=$credenziali['cognome'];
 
                     <?php if(isset($_SESSION['id'])){
                         echo ' <li class="nav-item">
-                                        <a href="#" class="nav-link" style="width: 270px">
+                                        <a href="#" class="nav-link">
                                             <i class="nav-icon fas fa-copy"></i>
                                                      <p>
                                                 <i class="bi bi-bag me-1"></i>
-                                                I tuoi acquisti
+                                                Movimenti
                                                 <i class="fas fa-angle-left right"></i>
                                             </p>
                                             </a>
                                         <ul class="nav nav-treeview">
                                             <li class="nav-item">
-                                                <a href="pages/layout/top-nav.html" class="nav-link" style="width: 270px">//mettere link acquisti
+                                                <a href="pages/layout/top-nav.html" class="nav-link">//mettere link acquisti
                                                     <i class="fa-solid fa-cart-arrow-down"></i>
                                                     <p>Acquisti</p>
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="pages/layout/top-nav-sidebar.html" class="nav-link" style="width: 270px">//mettere link noleggi
+                                                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">//mettere link noleggi
                                                     <i class="far fa-circle nav-icon"></i>
                                                     <p>Noleggi</p>
                                                 </a>
                                             </li>
                                         </ul>
-                                    </li>' ;}
+                                    </li>';}
                     ?>
 
 
+
                     <li class="nav-item">
-                        <a href="catalogoalbum.php" class="nav-link" style="width: 270px">
+                        <a href="catalogoalbumadmin.php" class="nav-link" style="width: 270px">
                             <i class="nav-icon fas fa-calendar-alt"></i>
                             <i class="bi bi-list me-1"></i>
                             <p>
@@ -184,7 +171,7 @@ $cognome=$credenziali['cognome'];
                     </li>
 
                     <li class="nav-item">
-                        <a href="catalogofilm.php" class="nav-link" style="width: 270px">
+                        <a href="catalogofilmadmin.php" class="nav-link" style="width: 270px">
                             <i class="nav-icon fas fa-calendar-alt"></i>
                             <i class="bi bi-list me-1"></i>
                             <p>
@@ -196,28 +183,13 @@ $cognome=$credenziali['cognome'];
 
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
-                        <a href="#" class="nav-link" style="width: 270px">
-                            <i class="nav-icon fas fa-copy"></i>
+                        <a href="admintable.php" class="nav-link" style="width: 270px">
+                            <i class="nav-icon fas fa-calendar-alt"></i>
+                            <i class="bi bi-person-rolodex me-1"></i>
                             <p>
-                                <i class="bi bi-people me-1"></i>
-                                Contatti
-                                <i class="fas fa-angle-left right"></i>
+                                Amministratori
                             </p>
                         </a>
-                        <ul class="nav nav-treeview" >
-                            <li class="nav-item" >
-                                <i class="far fa-circle nav-icon"></i>
-                                <p class="nav-link" style="font-size: 14; width: 270px" >matteo.piccadaci@videotecha.org </p>
-                            </li>
-                            <li class="nav-item">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p class="nav-link" style="font-size: 14; width: 270px";>antonino.mastronardo@videotecha.org</p>
-                            </li>
-                            <li class="nav-item">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p class="nav-link" style="font-size: 14; width: 270px">Tel: 0806623056</p>
-                            </li>
-                        </ul>
                     </li>
                 </ul>
             </nav>
@@ -230,80 +202,43 @@ $cognome=$credenziali['cognome'];
     <div class="content-wrapper" style="padding-left: 50px">
 
         <?php
-        $queryutente="SELECT Registi.nome, Registi.cognome, Film.nome_film, Film.genere, Film.anno_pubblicazione,Film.produttore,Film.quantita_copie, Film.prezzo_acquisto
- FROM Film join Registi on Film.regista = Registi.id_regista
- ORDER BY Registi.cognome, Film.anno_pubblicazione";
-        $queryguest="SELECT Registi.nome, Registi.cognome, Film.nome_film, Film.genere, Film.anno_pubblicazione,Film.produttore,Film.quantita_copie
-        FROM Film join Registi on Film.regista = Registi.id_regista
- ORDER BY Registi.cognome, Film.anno_pubblicazione";
-        $ute=$connex_db->query($queryutente);
-        $gue=$connex_db->query($queryguest);
-        $arrute=mysqli_fetch_array($ute, MYSQLI_ASSOC);
-        $arrgue=mysqli_fetch_array($gue, MYSQLI_ASSOC);
+
+        $queryadmin="SELECT Musicisti.nome_musicista, Album.id_album, Album.nome_album, Album.genere_album, Album.anno_pubblicazione,Album.quantita_copie, Album.casa_discografica, Album.prezzo_acquisto
+        FROM Album join Musicisti on Album.musicista = Musicisti.id_musicista
+        ORDER BY Musicisti.nome_musicista, Album.anno_pubblicazione";
+
+        $admin=$connex_db->query($queryadmin);
+        $arradmin=mysqli_fetch_array($admin, MYSQLI_ASSOC);
+
+
         if(isset($_SESSION['id'])){
 
-        echo '<table class="table table-hover"; width: 800px">
+            echo '<table class="table table-hover"; width: 800px">
 <thead>
 <tr>
-<th scope="col"> REGISTA </th>
+<th scope="col"> COD </th>
 <th scope="col"> NOME</th>
+<th scope="col"> ARTISTA </th>
 <th scope="col">GENERE</th>
 <th scope="col">ANNO</th>
-<th scope="col">PRODUTTORE</th>
+<th scope="col">CASA DISCOGRAFICA</th>
 <th scope="col">PREZZO ACQUISTO</th>
-<th scope="col">DISPONIBILITÀ</th>
-<th scope="col"> ACQUISTA</th>
+<th scope="col">QUANTITÀ</th>
 </tr>
 </thead>
 ';
-        if($ute=$connex_db->query($queryutente)){
-            while($arrute=mysqli_fetch_array($ute, MYSQLI_ASSOC)) {
-                if($arrute['quantita_copie']>0){
-                    $disp='Disponibilità immediata';
-                }
-                else{
-                    $disp='Non disponibile';
-                }
-                echo "<tr><th scope='row'>" .$arrute['cognome']. ' ' . $arrute['nome'] . "</th><th scope='row'>" . $arrute['nome_film'] . "</th><th scope='row' style='alignment: center'>" . $arrute['genere'] . "</th>
-                          <th scope='row'>" . $arrute['anno_pubblicazione'] . "</th>
-                          <th scope='row'>" . $arrute['produttore'] . "</th>
-                          <th scope='row'>" . $arrute['prezzo_acquisto'] . "</th>
-                          <th scope='row'>" . $disp . "</th>
-                           </th> <th scope='row' style='alignment: right'><button type='submit' name='eliminare'></button></th></tr>";
+            if($admin=$connex_db->query($queryadmin)){
+                while($arradmin=mysqli_fetch_array($admin, MYSQLI_ASSOC)) {
+
+                    echo "<tr><th scope='row'>" .$arradmin['id_album']. "</th><th scope='row'>" . $arradmin['nome_album'] . "</th><th scope='row'>" .$arradmin['nome_musicista']. "</th><th scope='row' style='alignment: center'>" . $arradmin['genere_album'] . "</th>
+                          <th scope='row'>" . $arradmin['anno_pubblicazione'] . "</th>
+                          <th scope='row'>" . $arradmin['casa_discografica'] . "</th>
+                              <th scope='row'>" . $arradmin['prezzo_acquisto'] . "</th>
+                          <th scope='row' >" . $arradmin["quantita_copie"]. "</th>
+                         <th scope='row' style='alignment: right'><button type='submit' name='eliminare'></button></th></tr>";
+                }}
+                $admin->free();
             }
-            $ute->free();
-        }
-        }
-        else{
-            echo '<table class="table table-hover"; width: 850px">
-<thead>
-<tr>
-<th scope="col"> REGISTA </th>
-<th scope="col"> NOME</th>
-<th scope="col">GENERE</th>
-<th scope="col">ANNO</th>
-<th scope="col">PRODUTTORE</th>
-<th scope="col"> DISPONIBILITÀ</th>
-</tr>
-</thead>
-';
-            if($gue=$connex_db->query($queryutente)){
-                while($arrgue=mysqli_fetch_array($gue, MYSQLI_ASSOC)) {
-                    if($arrgue['quantita_copie']>0){
-                        $disp='Disponibilità immediata';
-                    }
-                    else{
-                        $disp='Non disponibile';
-                    }
-                    echo "<tr><th scope='row'>" .$arrute['cognome']. ' ' . $arrute['nome'] . "</th><th scope='row'>" . $arrgue['nome_film'] . "</th><th scope='row' style='alignment: center'>" . $arrgue['genere'] . "</th>
-                          <th scope='row'>" . $arrgue['anno_pubblicazione'] . "</th>
-                          <th scope='row'>" . $arrgue['produttore'] . "</th>
-                          <th scope='row'>". $disp. "</th>
-                          <th scope='row' style='alignment: right'><button type='submit' name='eliminare'></button></th></tr>";
-                }
-                $gue->free();
-            }
-        }
         ?>
     </div>
 
@@ -311,12 +246,12 @@ $cognome=$credenziali['cognome'];
 </div>
 
 
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
 
-    <!-- Main Footer -->
+<!-- Main Footer -->
 
 </div>
 <!-- ./wrapper -->

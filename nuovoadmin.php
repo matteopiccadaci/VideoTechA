@@ -26,9 +26,7 @@ if (isset($_POST['invia'])) {
                 VALUES ('$nome', '$cognome', '$data', '$mail', '$password_hash')
             ";
         if ($result=$connex_db->query($query)){
-            header("location: /loginamm.php");
-            echo "<script> alert('Registrazione avvenuta!')</script>";
-
+            echo "<script> alert('Registrazione avvenuta!'); window.location.replace('/loginamm.php')</script>";
         }
     } //registrazione avvenuta
 

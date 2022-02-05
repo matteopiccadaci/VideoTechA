@@ -48,15 +48,17 @@ $mail=$arr['mail'];
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="homeadmin.php" class="nav-link bi bi-house me-1"> Home</a>
             </li>
+
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="nuovoadmin.php" class="nav-link bi bi-person-plus-fill me-1"> Inserisci un nuovo amministratore</a>
+            </li>
+
             <form class=""><?php
                 if(isset($_SESSION['id'])){
                     echo '<li class="nav-item d-none d-sm-inline-block">
                 <a href="logout.php" class="nav-link bi bi-box-arrow-left me-1"> Logout</a>
             </li>';}
                 ?></form>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="nuovoadmin.php" class="nav-link bi bi-person-plus-fill me-1"> Inserisci un nuovo amministratore</a>
-            </li>
 
         </ul>
 
@@ -125,7 +127,7 @@ $mail=$arr['mail'];
 
                     <?php if(isset($_SESSION['id'])){
                         echo ' <li class="nav-item">
-                                        <a href="#" class="nav-link">
+                                        <a href="#" class="nav-link" style="width: 270px">
                                             <i class="nav-icon fas fa-copy"></i>
                                                      <p>
                                                 <i class="bi bi-bag me-1"></i>
@@ -135,13 +137,13 @@ $mail=$arr['mail'];
                                             </a>
                                         <ul class="nav nav-treeview">
                                             <li class="nav-item">
-                                                <a href="pages/layout/top-nav.html" class="nav-link">//mettere link acquisti
+                                                <a href="pages/layout/top-nav.html" class="nav-link" style="width: 270px">//mettere link acquisti
                                                     <i class="fa-solid fa-cart-arrow-down"></i>
                                                     <p>Acquisti</p>
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">//mettere link noleggi
+                                                <a href="pages/layout/top-nav-sidebar.html" class="nav-link" style="width: 270px">//mettere link noleggi
                                                     <i class="far fa-circle nav-icon"></i>
                                                     <p>Noleggi</p>
                                                 </a>
@@ -152,7 +154,7 @@ $mail=$arr['mail'];
 
 
                     <li class="nav-item">
-                        <a href="catalogoalbum.php" class="nav-link" style="width: 270px">
+                        <a href="catalogoalbumadmin.php" class="nav-link" style="width: 270px">
                             <i class="nav-icon fas fa-calendar-alt"></i>
                             <i class="bi bi-list me-1"></i>
                             <p>
@@ -162,7 +164,7 @@ $mail=$arr['mail'];
                     </li>
 
                     <li class="nav-item">
-                        <a href="catalogofilm.php" class="nav-link" style="width: 270px">
+                        <a href="catalogofilmadmin.php" class="nav-link" style="width: 270px">
                             <i class="nav-icon fas fa-calendar-alt"></i>
                             <i class="bi bi-list me-1"></i>
                             <p>
@@ -203,16 +205,27 @@ FROM Amministratori";
 <th scope="col"> NOME </th>
 <th scope="col"> COGNOME</th>
 <th scope="col">MAIL</th>
-<th scope="col">MODIFICA</th>
-<th scope="col">ELIMINA</th>
-</tr>
-</thead>
-';
+<th scope="col">MODIFICA PASS</th>';
+        if ($_SESSION['id']==3 || $_SESSION['id']==1){
+            echo '<th scope="col">ELIMINA</th>';
+        }
+        else
+            echo '<th></th>';
+echo '</tr></thead>';
+
         if($res2=$connex_db->query($queryalladmin)){
             while($arr2=mysqli_fetch_array($res2, MYSQLI_ASSOC)) {
-                echo "<tr><th scope='row'>" . $arr2['id_amministratore'] . "</th><th scope='row'>" .$arr2['nome']. "</th><th scope='row'>" . $arr2['cognome'] . "</th><th scope='row' style='alignment: center'>" . $arr2['mail'] . "</th>
-                          <th scope='row' style='alignment: right'> <button type='submit' name='modifica'></button>
-                           </th> <th scope='row' style='alignment: right'><button type='submit' name='eliminare'></button></th></tr>";
+                if($_SESSION['id']==3 || $_SESSION['id']==1){
+                    echo "<tr><th scope='row'>" . $arr2['id_amministratore'] . "</th><th scope='row'>" .$arr2['nome']. "</th><th scope='row'>" . $arr2['cognome'] . "</th><th scope='row' style='alignment: center'>" . $arr2['mail'] . "</th>
+                          <th scope='row' style='alignment: right'> <button type='submit' class='bi bi-arrow-clockwise' name='modifica'></button>
+                           </th> <th scope='row' style='alignment: right'><button type='submit' class='bi bi-trash-fill' name='eliminare'></button></th></tr>";
+                }
+                else{
+                    echo "<tr><th scope='row'>" . $arr2['id_amministratore'] . "</th><th scope='row'>" .$arr2['nome']. "</th><th scope='row'>" . $arr2['cognome'] . "</th><th scope='row' style='alignment: center'>" . $arr2['mail'] . "</th>
+                          <th scope='row' style='alignment: right'> <button type='submit' class='bi bi-arrow-clockwise' name='modifica'></button>
+                           </th></tr>";
+                }
+
             }
             $res2->free();
         }
