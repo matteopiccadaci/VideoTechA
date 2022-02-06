@@ -218,7 +218,16 @@ $mail=$arr['mail'];
 FROM Amministratori";
         $res2=$connex_db->query($queryalladmin);
         $arr2=mysqli_fetch_array($res2, MYSQLI_ASSOC);
-        echo '<table class="table table-hover"; width: 900px">
+
+        if(isset($_SESSION['id'])) {
+            echo '<div>
+  <div class="form-inline" style="float: right"><span class="d-none d-lg-inline"><input class="form-control form-control-sidebar" type="search" id="cercaid" onkeyup="myFunction1()" placeholder="Cerca per ID..." title="Cerca ID">
+  <input class="form-control form-control-sidebar" type="search" id="cercanome" onkeyup="myFunction2()" placeholder="Cerca per Nome..." title="Cerca Nome">
+  <input class="form-control form-control-sidebar" type="search" id="cercacognome" onkeyup="myFunction3()" placeholder="Cerca per Cognome..." title="Cerca Cognome"></span></div>
+  
+</div> ';
+
+            echo '<table id="admin" class="table table-hover"; width: 900px">
 <thead>
 <tr>
 <th scope="col" > ID</th>
@@ -226,50 +235,46 @@ FROM Amministratori";
 <th scope="col"> COGNOME</th>
 <th scope="col">MAIL</th>
 <th scope="col" class="text-center">AGGIORNA PASSWORD</th>';
-        if ($_SESSION['id']==3 || $_SESSION['id']==1){
-            echo '<th scope="col" class="text-center">ELIMINA</th>';
-        }
-        else
-            echo '<th></th>';
-echo '</tr></thead>';
+            if ($_SESSION['id'] == 3 || $_SESSION['id'] == 1) {
+                echo '<th scope="col" class="text-center">ELIMINA</th>';
+            } else
+                echo '<th></th>';
+            echo '</tr></thead>';
 
-        if($res2=$connex_db->query($queryalladmin)){
-            while($arr2=mysqli_fetch_array($res2, MYSQLI_ASSOC)) {
-                if($_SESSION['id']==3 || $_SESSION['id']==1){
-                    echo "<tr><th scope='row'>" . $arr2['id_amministratore'] . "</th><th scope='row'>" .$arr2['nome']. "</th><th scope='row'>" . $arr2['cognome'] . "</th><th scope='row' style='alignment: center'>" . $arr2['mail'] . "</th>
+            if ($res2 = $connex_db->query($queryalladmin)) {
+                while ($arr2 = mysqli_fetch_array($res2, MYSQLI_ASSOC)) {
+                    if ($_SESSION['id'] == 3 || $_SESSION['id'] == 1) {
+                        echo "<tr><th scope='row'>" . $arr2['id_amministratore'] . "</th><th scope='row'>" . $arr2['nome'] . "</th><th scope='row'>" . $arr2['cognome'] . "</th><th scope='row' style='alignment: center'>" . $arr2['mail'] . "</th>
                           ";
-                    if($arr2['id_amministratore']==3 || $arr2['id_amministratore']==1){
-                        echo "<th scope='row' style='alignment: right' class='text-center'><a href='aggiornapasswordadmin.php'><button type='submit' class='bi bi-arrow-clockwise' name='modifica'></button></a></th>";
-                    }
-                    else {
-                        echo "<th></th>";
-                    }
+                        if ($arr2['id_amministratore'] == 3 || $arr2['id_amministratore'] == 1) {
+                            echo "<th scope='row' style='alignment: right' class='text-center'><a href='aggiornapasswordadmin.php'><button type='submit' class='bi bi-arrow-clockwise' name='modifica'></button></a></th>";
+                        } else {
+                            echo "<th></th>";
+                        }
 
-                    if($arr2['id_amministratore']!=3 && $arr2['id_amministratore']!=1){
-                        echo "<th scope='row' style='alignment: right' class='text-center'><a href='eliminaadmin.php'><button type='submit' class='bi bi-trash-fill' name='eliminare'></button></a></th>";
-                    }
-                    else {
-                        echo "<th></th>";
-                    }
-                    echo "</tr>";
+                        if ($arr2['id_amministratore'] != 3 && $arr2['id_amministratore'] != 1) {
+                            echo "<th scope='row' style='alignment: right' class='text-center'><a href='eliminaadmin.php'><button type='submit' class='bi bi-trash-fill' name='eliminare'></button></a></th>";
+                        } else {
+                            echo "<th></th>";
+                        }
+                        echo "</tr>";
 
-                }
-                else{
-                    echo "<tr><th scope='row'>" . $arr2['id_amministratore'] . "</th><th scope='row'>" .$arr2['nome']. "</th><th scope='row'>" . $arr2['cognome'] . "</th><th scope='row' style='alignment: center'>" . $arr2['mail'] ;
-                    if($arr2['id_amministratore']==$_SESSION['id']){
-                          echo "</th><th scope='row' style='alignment: right' class='text-center'><a href='aggiornapasswordadmin.php'><button type='submit' class='bi bi-arrow-clockwise' name='modifica'></button></a>
+                    } else {
+                        echo "<tr><th scope='row'>" . $arr2['id_amministratore'] . "</th><th scope='row'>" . $arr2['nome'] . "</th><th scope='row'>" . $arr2['cognome'] . "</th><th scope='row' style='alignment: center'>" . $arr2['mail'];
+                        if ($arr2['id_amministratore'] == $_SESSION['id']) {
+                            echo "</th><th scope='row' style='alignment: right' class='text-center'><a href='aggiornapasswordadmin.php'><button type='submit' class='bi bi-arrow-clockwise' name='modifica'></button></a>
                            </th></tr>";
+                        } else {
+                            echo "<th></th>";
+                        }
+                        echo "</tr>";
                     }
-                    else {
-                        echo "<th></th>";
-                    }
-                    echo "</tr>";
+
                 }
-
+                $res2->free();
             }
-            $res2->free();
-        }
 
+        }
         ?>
     </div>
 
@@ -298,6 +303,78 @@ echo '</tr></thead>';
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard3.js"></script>
+
+
+    <script>
+        function myFunction1() {
+            var input, filter, table, tr, th, i, txtValue;
+            input = document.getElementById("cercaid");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("admin");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                th = tr[i].getElementsByTagName("th")[0];
+                if (th) {
+                    txtValue = th.textContent || th.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+
+
+
+    <script>
+        function myFunction2() {
+            var input, filter, table, tr, th, i, txtValue;
+            input = document.getElementById("cercanome");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("admin");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                th = tr[i].getElementsByTagName("th")[1];
+                if (th) {
+                    txtValue = th.textContent || th.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+
+
+
+    <script>
+        function myFunction3() {
+            var input, filter, table, tr, th, i, txtValue;
+            input = document.getElementById("cercacognome");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("admin");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                th = tr[i].getElementsByTagName("th")[2];
+                if (th) {
+                    txtValue = th.textContent || th.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+
+
+
+
 </body>
 
 </html>

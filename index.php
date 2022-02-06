@@ -124,10 +124,11 @@ $cognome=$arr['cognome'];
                     FROM Fedelta
                     WHERE cliente='" . $_SESSION['id'] . "'";
 
+                        if (isset($_SESSION['id'])){
                         if($arrfed=$connex_db->query($queryfed)){
                         echo "<div style='font-size: 13px'>Cliente fedele  <i class='bi bi-postcard'></i></div>";
                         }
-                    }
+                    }}
                     else{
                         echo "Ospite";
                     }

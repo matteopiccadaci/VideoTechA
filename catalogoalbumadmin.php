@@ -239,9 +239,9 @@ $cognome=$credenziali['cognome'];
 <button  type="button" name="aggiungi" class="btn btn-dark"> <a style="color: white" href="copiealbum.php"> Modifica la quantità di copie </a></button>
    
   
-  <div class="form-inline" style="float: right"><span class="d-none d-lg-inline"><input class="form-control form-control-sidebar" type="search" id="cercanome" onkeyup="myFunction1()" placeholder="Cerca Nome" title="Cerca Nome">
-  <input class="form-control form-control-sidebar" type="search" id="cercaartista" onkeyup="myFunction2()" placeholder="Cerca Artista" title="Cerca Artista">
-  <input class="form-control form-control-sidebar" type="search" id="cercagenere" onkeyup="myFunction3()" placeholder="Cerca Genere" title="Cerca Genere"></span></div>
+  <div class="form-inline" style="float: right"><span class="d-none d-lg-inline"><input class="form-control form-control-sidebar" type="search" id="cercanome" onkeyup="myFunction1()" placeholder="Cerca Album..." title="Cerca Nome">
+  <input class="form-control form-control-sidebar" type="search" id="cercaartista" onkeyup="myFunction2()" placeholder="Cerca Artista..." title="Cerca Artista">
+  <input class="form-control form-control-sidebar" type="search" id="cercagenere" onkeyup="myFunction3()" placeholder="Cerca Genere..." title="Cerca Genere"></span></div>
   
 </div> ';
 

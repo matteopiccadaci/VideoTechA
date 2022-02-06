@@ -116,11 +116,11 @@ $cognome=$credenziali['cognome'];
                         $queryfed = "SELECT *
                     FROM Fedelta
                     WHERE cliente='" . $_SESSION['id'] . "'";
-
+                        if(isset($_SESSION['id'])){
                         if($arrfed=$connex_db->query($queryfed)){
                             echo "<div style='font-size: 13px'>Cliente fedele  <i class='bi bi-postcard'></i></div>";
                         }
-                    }
+                    }}
                     else{
                         echo "Ospite";
                     }
@@ -229,6 +229,15 @@ $cognome=$credenziali['cognome'];
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper" style="padding-left: 50px">
 
+        <div class="form-inline" style="float: right">
+<span class="d-none d-lg-inline">
+    <input class="form-control form-control-sidebar" type="search" id="cercanome" onkeyup="myFunction1()" placeholder="Cerca Film..." title="Cerca Nome">
+<input class="form-control form-control-sidebar" type="search" id="cercaregista" onkeyup="myFunction2()" placeholder="Cerca Regista..." title="Cerca Artista">
+<input class="form-control form-control-sidebar" type="search" id="cercagenere" onkeyup="myFunction3()" placeholder="Cerca Genere..." title="Cerca Genere">
+<input class="form-control form-control-sidebar" type="search" id="cercaanno" onkeyup="myFunction4()" placeholder="Cerca per anno..." title="Cerca Anno">
+</span>
+        </div>
+
         <?php
         $queryutente="SELECT Registi.nome, Registi.cognome, Film.nome_film, Film.genere, Film.anno_pubblicazione,Film.produttore,Film.quantita_copie, Film.prezzo_acquisto
  FROM Film join Registi on Film.regista = Registi.id_regista
@@ -242,7 +251,7 @@ $cognome=$credenziali['cognome'];
         $arrgue=mysqli_fetch_array($gue, MYSQLI_ASSOC);
         if(isset($_SESSION['id'])){
 
-        echo '<table class="table table-hover"; width: 800px">
+        echo '<table id="film" class="table table-hover"; width: 800px">
 <thead>
 <tr>
 <th scope="col"> REGISTA </th>
@@ -275,7 +284,7 @@ $cognome=$credenziali['cognome'];
         }
         }
         else{
-            echo '<table class="table table-hover"; width: 850px">
+            echo '<table id="film" class="table table-hover"; width: 850px">
 <thead>
 <tr>
 <th scope="col"> REGISTA </th>
@@ -336,5 +345,93 @@ $cognome=$credenziali['cognome'];
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard3.js"></script>
+
+<script>
+    function myFunction1() {
+        var input, filter, table, tr, th, i, txtValue;
+        input = document.getElementById("cercanome");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("film");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            th = tr[i].getElementsByTagName("th")[1];
+            if (th) {
+                txtValue = th.textContent || th.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+
+
+<script>
+    function myFunction2() {
+        var input, filter, table, tr, th, i, txtValue;
+        input = document.getElementById("cercaregista");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("film");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            th = tr[i].getElementsByTagName("th")[0];
+            if (th) {
+                txtValue = th.textContent || th.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+
+
+<script>
+    function myFunction3() {
+        var input, filter, table, tr, th, i, txtValue;
+        input = document.getElementById("cercagenere");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("film");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            th = tr[i].getElementsByTagName("th")[2];
+            if (th) {
+                txtValue = th.textContent || th.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+<script>
+    function myFunction4() {
+        var input, filter, table, tr, th, i, txtValue;
+        input = document.getElementById("cercaanno");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("film");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            th = tr[i].getElementsByTagName("th")[3];
+            if (th) {
+                txtValue = th.textContent || th.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
 </body>
 </html>

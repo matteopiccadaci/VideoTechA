@@ -116,11 +116,11 @@ $cognome=$credenziali['cognome'];
                         $queryfed = "SELECT *
                     FROM Fedelta
                     WHERE cliente='" . $_SESSION['id'] . "'";
-
+                        if(isset($_SESSION['id'])){
                         if($arrfed=$connex_db->query($queryfed)){
                             echo "<div style='font-size: 13px'>Cliente fedele  <i class='bi bi-postcard'></i></div>";
                         }
-                    }
+                    }}
                     else{
                         echo "Ospite";
                     }
@@ -228,6 +228,14 @@ $cognome=$credenziali['cognome'];
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper" style="padding-left: 50px">
+        <div class="form-inline" style="float: right">
+<span class="d-none d-lg-inline">
+<input class="form-control form-control-sidebar" type="search" id="cercaartista" onkeyup="myFunction2()" placeholder="Cerca Artista..." title="Cerca Artista">
+<input class="form-control form-control-sidebar" type="search" id="cercanome" onkeyup="myFunction1()" placeholder="Cerca Album..." title="Cerca Nome">
+<input class="form-control form-control-sidebar" type="search" id="cercagenere" onkeyup="myFunction3()" placeholder="Cerca Genere..." title="Cerca Genere">
+<input class="form-control form-control-sidebar" type="search" id="cercaanno" onkeyup="myFunction4()" placeholder="Cerca per anno..." title="Cerca Anno">
+</span>
+        </div>
 
         <?php
         $queryutente="SELECT Musicisti.nome_musicista, Album.nome_album, Album.genere_album, Album.anno_pubblicazione,Album.casa_discografica,Album.quantita_copie, Album.prezzo_acquisto
@@ -246,7 +254,7 @@ $cognome=$credenziali['cognome'];
 
         if(isset($_SESSION['id'])){
 
-        echo '<table class="table table-hover"; width: 800px">
+        echo '<table id="album" class="table table-hover"; width: 800px">
 <thead>
 <tr>
 <th scope="col"> ARTISTA </th>
@@ -279,7 +287,7 @@ $cognome=$credenziali['cognome'];
         }
         }
         else{
-            echo '<table class="table table-hover"; width: 850px">
+            echo '<table id="album" class="table table-hover"; width: 850px">
 <thead>
 <tr>
 <th scope="col"> ARTISTA </th>
@@ -340,5 +348,93 @@ $cognome=$credenziali['cognome'];
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard3.js"></script>
+<script>
+    function myFunction1() {
+        var input, filter, table, tr, th, i, txtValue;
+        input = document.getElementById("cercanome");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("album");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            th = tr[i].getElementsByTagName("th")[1];
+            if (th) {
+                txtValue = th.textContent || th.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+
+
+<script>
+    function myFunction2() {
+        var input, filter, table, tr, th, i, txtValue;
+        input = document.getElementById("cercaartista");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("album");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            th = tr[i].getElementsByTagName("th")[0];
+            if (th) {
+                txtValue = th.textContent || th.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+
+
+<script>
+    function myFunction3() {
+        var input, filter, table, tr, th, i, txtValue;
+        input = document.getElementById("cercagenere");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("album");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            th = tr[i].getElementsByTagName("th")[2];
+            if (th) {
+                txtValue = th.textContent || th.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+<script>
+    function myFunction4() {
+        var input, filter, table, tr, th, i, txtValue;
+        input = document.getElementById("cercaanno");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("album");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            th = tr[i].getElementsByTagName("th")[3];
+            if (th) {
+                txtValue = th.textContent || th.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
 </body>
 </html>

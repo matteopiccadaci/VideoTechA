@@ -235,9 +235,15 @@ $cognome=$credenziali['cognome'];
 
             echo '<div>
 <button  type="button" name="aggiungi" class="btn btn-dark"> <a style="color: white" href="aggiungimusicista.php"> Aggiungi artista </a></button>
+<div class="form-inline" style="float: right"><span class="d-none d-lg-inline">
+  <input class="form-control form-control-sidebar" type="search" id="cercanome" onkeyup="myFunction1()" placeholder="Cerca Artista..." title="Cerca Nome">
+  <input class="form-control form-control-sidebar" type="search" id="cercacodice" onkeyup="myFunction2()" placeholder="Cerca per codice..." title="Cerca Codice">
+ 
+  </span>
+  </div>
                 </div> ';
 
-            echo ' <table class="table table-hover"; width: 800px">
+            echo ' <table id="artisti" class="table table-hover"; width: 800px">
 <thead>
 <tr>
 <th scope="col"> COD </th>
@@ -289,5 +295,46 @@ $cognome=$credenziali['cognome'];
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard3.js"></script>
+
+<script>
+    function myFunction1() {
+        var input, filter, table, tr, th, i, txtValue;
+        input = document.getElementById("cercanome");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("artisti");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            th = tr[i].getElementsByTagName("th")[1];
+            if (th) {
+                txtValue = th.textContent || th.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+<script>
+    function myFunction2() {
+        var input, filter, table, tr, th, i, txtValue;
+        input = document.getElementById("cercacodice");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("artisti");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            th = tr[i].getElementsByTagName("th")[0];
+            if (th) {
+                txtValue = th.textContent || th.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
 </body>
 </html>
