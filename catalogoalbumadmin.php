@@ -179,6 +179,26 @@ $cognome=$credenziali['cognome'];
                             </p>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a href="listamusicisti.php" class="nav-link" style="width: 270px">
+                            <i class="nav-icon fas fa-calendar-alt"></i>
+                            <i class="bi bi-list me-1"></i>
+                            <p>
+                                Lista Musicisti
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="listaregisti.php" class="nav-link" style="width: 270px">
+                            <i class="nav-icon fas fa-calendar-alt"></i>
+                            <i class="bi bi-list me-1"></i>
+                            <p>
+                                Lista Registi
+                            </p>
+                        </a>
+                    </li>
                 </ul>
 
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -203,6 +223,8 @@ $cognome=$credenziali['cognome'];
 
         <?php
 
+
+
         $queryadmin="SELECT Musicisti.nome_musicista, Album.id_album, Album.nome_album, Album.genere_album, Album.anno_pubblicazione,Album.quantita_copie, Album.casa_discografica, Album.prezzo_acquisto
         FROM Album join Musicisti on Album.musicista = Musicisti.id_musicista
         ORDER BY Musicisti.nome_musicista, Album.anno_pubblicazione";
@@ -212,8 +234,20 @@ $cognome=$credenziali['cognome'];
 
 
         if(isset($_SESSION['id'])){
+            echo '<div>
+<button  type="button" name="aggiungi" class="btn btn-dark"> <a style="color: white" href="aggiungialbum.php"> Inserisci nuovo album </a></button>
+<button  type="button" name="aggiungi" class="btn btn-dark"> <a style="color: white" href="copiealbum.php"> Modifica la quantità di copie </a></button>
+   
+  
+  <div class="form-inline" style="float: right"><span class="d-none d-lg-inline"><input class="form-control form-control-sidebar" type="search" id="cercanome" onkeyup="myFunction1()" placeholder="Cerca Nome" title="Cerca Nome">
+  <input class="form-control form-control-sidebar" type="search" id="cercaartista" onkeyup="myFunction2()" placeholder="Cerca Artista" title="Cerca Artista">
+  <input class="form-control form-control-sidebar" type="search" id="cercagenere" onkeyup="myFunction3()" placeholder="Cerca Genere" title="Cerca Genere"></span></div>
+  
+</div> ';
 
-            echo '<table class="table table-hover"; width: 800px">
+
+
+            echo '<table id="album" class="table table-hover"; width: 800px">
 <thead>
 <tr>
 <th scope="col"> COD </th>
@@ -235,12 +269,13 @@ $cognome=$credenziali['cognome'];
                           <th scope='row'>" . $arradmin['casa_discografica'] . "</th>
                               <th scope='row'>" . $arradmin['prezzo_acquisto'] . "</th>
                           <th scope='row' >" . $arradmin["quantita_copie"]. "</th>
-                         <th scope='row' style='alignment: right'><button type='submit' name='eliminare'></button></th></tr>";
+                        </tr>";
                 }}
                 $admin->free();
             }
         ?>
     </div>
+
 
 
 </div>
@@ -271,5 +306,73 @@ $cognome=$credenziali['cognome'];
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard3.js"></script>
+
+<script>
+    function myFunction1() {
+        var input, filter, table, tr, th, i, txtValue;
+        input = document.getElementById("cercanome");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("album");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            th = tr[i].getElementsByTagName("th")[1];
+            if (th) {
+                txtValue = th.textContent || th.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+
+
+<script>
+    function myFunction2() {
+        var input, filter, table, tr, th, i, txtValue;
+        input = document.getElementById("cercaartista");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("album");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            th = tr[i].getElementsByTagName("th")[2];
+            if (th) {
+                txtValue = th.textContent || th.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+
+
+<script>
+    function myFunction3() {
+        var input, filter, table, tr, th, i, txtValue;
+        input = document.getElementById("cercagenere");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("album");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            th = tr[i].getElementsByTagName("th")[3];
+            if (th) {
+                txtValue = th.textContent || th.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
 </body>
 </html>

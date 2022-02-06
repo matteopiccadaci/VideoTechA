@@ -179,6 +179,26 @@ $cognome=$credenziali['cognome'];
                             </p>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a href="listamusicisti.php" class="nav-link" style="width: 270px">
+                            <i class="nav-icon fas fa-calendar-alt"></i>
+                            <i class="bi bi-list me-1"></i>
+                            <p>
+                                Lista Musicisti
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="listaregisti.php" class="nav-link" style="width: 270px">
+                            <i class="nav-icon fas fa-calendar-alt"></i>
+                            <i class="bi bi-list me-1"></i>
+                            <p>
+                                Lista Registi
+                            </p>
+                        </a>
+                    </li>
                 </ul>
 
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -213,6 +233,11 @@ $cognome=$credenziali['cognome'];
 
         if(isset($_SESSION['id'])){
 
+            echo '<div>
+<button  type="button" name="aggiungi" class="btn btn-dark"> <a style="color: white" href="aggiungifilm.php"> Inserisci nuovo film </a></button>
+<button  type="button" name="aggiungi" class="btn btn-dark"> <a style="color: white" href="copiefilm.php"> Modifica la quantità di copie </a></button>
+                </div> ';
+
             echo '<table class="table table-hover"; width: 800px">
 <thead>
 <tr>
@@ -233,8 +258,7 @@ $cognome=$credenziali['cognome'];
                           <th scope='row'>" . $arradmin['anno_pubblicazione'] . "</th>
                           <th scope='row'>" . $arradmin['produttore'] . "</th>
                               <th scope='row'>" . $arradmin['prezzo_acquisto'] . "</th>
-                          <th scope='row' >" . $arradmin["quantita_copie"]. "</th>
-                         <th scope='row' style='alignment: right'><button type='submit' name='eliminare'></button></th></tr>";
+                          <th scope='row' >" . $arradmin["quantita_copie"]. "</th></tr>";
                 }}
             $admin->free();
         }

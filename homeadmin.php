@@ -152,6 +152,8 @@ $mail=$arr['mail'];
                     ?>
 
 
+
+
                     <li class="nav-item">
                         <a href="catalogoalbumadmin.php" class="nav-link" style="width: 270px">
                             <i class="nav-icon fas fa-calendar-alt"></i>
@@ -168,6 +170,26 @@ $mail=$arr['mail'];
                             <i class="bi bi-list me-1"></i>
                             <p>
                                 Catalogo Film
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="listamusicisti.php" class="nav-link" style="width: 270px">
+                            <i class="nav-icon fas fa-calendar-alt"></i>
+                            <i class="bi bi-list me-1"></i>
+                            <p>
+                                Lista Musicisti
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="listaregisti.php" class="nav-link" style="width: 270px">
+                            <i class="nav-icon fas fa-calendar-alt"></i>
+                            <i class="bi bi-list me-1"></i>
+                            <p>
+                                Lista Registi
                             </p>
                         </a>
                     </li>
