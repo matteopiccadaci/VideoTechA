@@ -183,7 +183,7 @@ $cognome=$credenziali['cognome'];
                     <li class="nav-item">
                         <a href="listamusicisti.php" class="nav-link" style="width: 270px">
                             <i class="nav-icon fas fa-calendar-alt"></i>
-                            <i class="bi bi-list me-1"></i>
+                            <i class="bi bi-person-lines-fill me-1"></i>
                             <p>
                                 Lista Musicisti
                             </p>
@@ -193,7 +193,7 @@ $cognome=$credenziali['cognome'];
                     <li class="nav-item">
                         <a href="listaregisti.php" class="nav-link" style="width: 270px">
                             <i class="nav-icon fas fa-calendar-alt"></i>
-                            <i class="bi bi-list me-1"></i>
+                            <i class="bi bi-person-lines-fill me-1"></i>
                             <p>
                                 Lista Registi
                             </p>
@@ -244,7 +244,8 @@ $cognome=$credenziali['cognome'];
                 
                 </div> ';
 
-            echo ' <table id="registi" class="table table-hover"; width: 800px">
+            echo ' <div style="overflow: auto; max-height: 800px">
+<table id="registi" class="table table-hover" style="width: 1200px">
 <thead>
 <tr>
 <th scope="col"> COD </th>
@@ -263,7 +264,7 @@ $cognome=$credenziali['cognome'];
         }
 
         ?>
-
+    </div>
     </div>
 
 
@@ -283,11 +284,11 @@ $cognome=$credenziali['cognome'];
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="src/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="src/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE -->
-<script src="dist/js/adminlte.js"></script>
+<script src="src/dist/js/adminlte.js"></script>
 
 <!-- OPTIONAL SCRIPTS -->
 <script src="plugins/chart.js/Chart.min.js"></script>

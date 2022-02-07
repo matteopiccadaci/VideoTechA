@@ -177,7 +177,7 @@ $mail=$arr['mail'];
                     <li class="nav-item">
                         <a href="listamusicisti.php" class="nav-link" style="width: 270px">
                             <i class="nav-icon fas fa-calendar-alt"></i>
-                            <i class="bi bi-list me-1"></i>
+                            <i class="bi bi-person-lines-fill me-1"></i>
                             <p>
                                 Lista Musicisti
                             </p>
@@ -187,7 +187,7 @@ $mail=$arr['mail'];
                     <li class="nav-item">
                         <a href="listaregisti.php" class="nav-link" style="width: 270px">
                             <i class="nav-icon fas fa-calendar-alt"></i>
-                            <i class="bi bi-list me-1"></i>
+                            <i class="bi bi-person-lines-fill me-1"></i>
                             <p>
                                 Lista Registi
                             </p>

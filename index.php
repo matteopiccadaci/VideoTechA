@@ -155,25 +155,25 @@ $cognome=$arr['cognome'];
 
                             <?php if(isset($_SESSION['id'])){
                                 echo ' <li class="nav-item">
-                                        <a href="#" class="nav-link">
+                                        <a href="#" class="nav-link" style="width: 270px">
                                             <i class="nav-icon fas fa-copy"></i>
                                                      <p>
                                                 <i class="bi bi-bag me-1"></i>
-                                                I tuoi acquisti
+                                                Acquista
                                                 <i class="fas fa-angle-left right"></i>
                                             </p>
                                             </a>
                                         <ul class="nav nav-treeview">
                                             <li class="nav-item">
-                                                <a href="pages/layout/top-nav.html" class="nav-link">//mettere link acquisti
+                                                <a href="acquistaalbum.php" class="nav-link" style="width: 270px">
                                                     <i class="fa-solid fa-cart-arrow-down"></i>
-                                                    <p>Acquisti</p>
+                                                    <p>Acquisto album musicali</p>
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">//mettere link noleggi
+                                                <a href="acquistafilm.php" class="nav-link" style="width: 270px">
                                                     <i class="far fa-circle nav-icon"></i>
-                                                    <p>Noleggi</p>
+                                                    <p>Acquisto film</p>
                                                 </a>
                                             </li>
                                         </ul>
@@ -290,11 +290,11 @@ $cognome=$arr['cognome'];
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="src/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="src/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE -->
-<script src="dist/js/adminlte.js"></script>
+<script src="src/dist/js/adminlte.js"></script>
 
 <!-- OPTIONAL SCRIPTS -->
 <script src="plugins/chart.js/Chart.min.js"></script>

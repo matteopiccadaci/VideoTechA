@@ -147,25 +147,25 @@ $cognome=$credenziali['cognome'];
 
                     <?php if(isset($_SESSION['id'])){
                         echo ' <li class="nav-item">
-                                        <a href="#" class="nav-link">
+                                        <a href="#" class="nav-link" style="width: 270px">
                                             <i class="nav-icon fas fa-copy"></i>
                                                      <p>
                                                 <i class="bi bi-bag me-1"></i>
-                                                I tuoi acquisti
+                                                Acquista
                                                 <i class="fas fa-angle-left right"></i>
                                             </p>
                                             </a>
                                         <ul class="nav nav-treeview">
                                             <li class="nav-item">
-                                                <a href="pages/layout/top-nav.html" class="nav-link">//mettere link acquisti
+                                                <a href="acquistaalbum.php" class="nav-link" style="width: 270px">
                                                     <i class="fa-solid fa-cart-arrow-down"></i>
-                                                    <p>Acquisti</p>
+                                                    <p>Acquisto album musicali</p>
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">//mettere link noleggi
+                                                <a href="acquistafilm.php" class="nav-link" style="width: 270px">
                                                     <i class="far fa-circle nav-icon"></i>
-                                                    <p>Noleggi</p>
+                                                    <p>Acquisto film</p>
                                                 </a>
                                             </li>
                                         </ul>
@@ -254,7 +254,8 @@ $cognome=$credenziali['cognome'];
 
         if(isset($_SESSION['id'])){
 
-        echo '<table id="album" class="table table-hover"; width: 800px">
+        echo '<div style="max-height: 800px">
+<table id="album" class="table table-hover" style="width: 1100px">
 <thead>
 <tr>
 <th scope="col"> ARTISTA </th>
@@ -264,7 +265,6 @@ $cognome=$credenziali['cognome'];
 <th scope="col">CASA DISCOGRAFICA</th>
 <th scope="col">PREZZO ACQUISTO</th>
 <th scope="col">DISPONIBILE</th>
-<th scope="col"> ACQUISTA</th>
 </tr>
 </thead>
 ';
@@ -280,14 +280,14 @@ $cognome=$credenziali['cognome'];
                           <th scope='row'>" . $arrute['anno_pubblicazione'] . "</th>
                           <th scope='row'>" . $arrute['casa_discografica'] . "</th>
                           <th scope='row'>" . $arrute['prezzo_acquisto'] . "</th>
-                          <th scope='row'>" . $disp . "</th>
-                           </th> <th scope='row' style='alignment: right'><button type='submit' name='eliminare'></button></th></tr>";
+                          <th scope='row'>" . $disp . "</th></tr>";
             }
             $ute->free();
         }
         }
         else{
-            echo '<table id="album" class="table table-hover"; width: 850px">
+            echo '<div style="max-height: 800px">
+<table id="album" class="table table-hover" style="width: 1100px">
 <thead>
 <tr>
 <th scope="col"> ARTISTA </th>
@@ -310,13 +310,14 @@ $cognome=$credenziali['cognome'];
                     echo "<tr><th scope='row'>" .$arrgue['nome_musicista']. "</th><th scope='row'>" . $arrgue['nome_album'] . "</th><th scope='row' style='alignment: center'>" . $arrgue['genere_album'] . "</th>
                           <th scope='row'>" . $arrgue['anno_pubblicazione'] . "</th>
                           <th scope='row'>" . $arrgue['casa_discografica'] . "</th>
-                          <th scope='row'>". $disp. "</th>
-                          <th scope='row' style='alignment: right'><button type='submit' name='eliminare'></button></th></tr>";
+                          <th scope='row'>". $disp. "</th></tr>";
                 }
                 $gue->free();
             }
         }
         ?>
+    </div>
+    </div>
     </div>
 
 
@@ -336,11 +337,11 @@ $cognome=$credenziali['cognome'];
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="src/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="src/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE -->
-<script src="dist/js/adminlte.js"></script>
+<script src="src/dist/js/adminlte.js"></script>
 
 <!-- OPTIONAL SCRIPTS -->
 <script src="plugins/chart.js/Chart.min.js"></script>

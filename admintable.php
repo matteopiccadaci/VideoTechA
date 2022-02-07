@@ -176,7 +176,7 @@ $mail=$arr['mail'];
                     <li class="nav-item">
                         <a href="listamusicisti.php" class="nav-link" style="width: 270px">
                             <i class="nav-icon fas fa-calendar-alt"></i>
-                            <i class="bi bi-list me-1"></i>
+                            <i class="bi bi-person-lines-fill me-1"></i>
                             <p>
                                 Lista Musicisti
                             </p>
@@ -186,7 +186,7 @@ $mail=$arr['mail'];
                     <li class="nav-item">
                         <a href="listaregisti.php" class="nav-link" style="width: 270px">
                             <i class="nav-icon fas fa-calendar-alt"></i>
-                            <i class="bi bi-list me-1"></i>
+                            <i class="bi bi-person-lines-fill me-1"></i>
                             <p>
                                 Lista Registi
                             </p>
@@ -227,7 +227,8 @@ FROM Amministratori";
   
 </div> ';
 
-            echo '<table id="admin" class="table table-hover"; width: 900px">
+            echo '<div style="max-height: 800px">
+<table id="admin" class="table table-hover" style="width: 1100px">
 <thead>
 <tr>
 <th scope="col" > ID</th>
@@ -276,6 +277,8 @@ FROM Amministratori";
 
         }
         ?>
+    </div>
+</div>
     </div>
 
 

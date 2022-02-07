@@ -180,38 +180,38 @@ $cognome=$credenziali['cognome'];
                         </a>
                     </li>
 
-                <li class="nav-item">
-                <a href="listamusicisti.php" class="nav-link" style="width: 270px">
-                    <i class="nav-icon fas fa-calendar-alt"></i>
-                    <i class="bi bi-list me-1"></i>
-                    <p>
-                        Lista Musicisti
-                    </p>
-                </a>
-                </li>
-
-                   <li class="nav-item">
-                    <a href="listaregisti.php" class="nav-link" style="width: 270px">
-                        <i class="nav-icon fas fa-calendar-alt"></i>
-                        <i class="bi bi-list me-1"></i>
-                        <p>
-                            Lista Registi
-                        </p>
-                    </a>
-                    </li>
-
-
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
-                        <a href="admintable.php" class="nav-link" style="width: 270px">
+                        <a href="listamusicisti.php" class="nav-link" style="width: 270px">
                             <i class="nav-icon fas fa-calendar-alt"></i>
-                            <i class="bi bi-person-rolodex me-1"></i>
+                            <i class="bi bi-person-lines-fill me-1"></i>
                             <p>
-                                Amministratori
+                                Lista Musicisti
                             </p>
                         </a>
                     </li>
-                </ul>
+
+                    <li class="nav-item">
+                        <a href="listaregisti.php" class="nav-link" style="width: 270px">
+                            <i class="nav-icon fas fa-calendar-alt"></i>
+                            <i class="bi bi-person-lines-fill me-1"></i>
+                            <p>
+                                Lista Registi
+                            </p>
+                        </a>
+                    </li>
+
+
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <li class="nav-item">
+                            <a href="admintable.php" class="nav-link" style="width: 270px">
+                                <i class="nav-icon fas fa-calendar-alt"></i>
+                                <i class="bi bi-person-rolodex me-1"></i>
+                                <p>
+                                    Amministratori
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
             </nav>
             <!-- /.sidebar-menu -->
         </div>
@@ -243,7 +243,9 @@ $cognome=$credenziali['cognome'];
   </div>
                 </div> ';
 
-            echo ' <table id="artisti" class="table table-hover"; width: 800px">
+            echo ' <div style="overflow: auto; max-height: 800px">
+ 
+ <table id="artisti" class="table table-hover" style="width: 1200px">
 <thead>
 <tr>
 <th scope="col"> COD </th>
@@ -264,6 +266,7 @@ $cognome=$credenziali['cognome'];
 
         ?>
 
+    </div>
     </div>
 
 
