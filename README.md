@@ -1,6 +1,6 @@
 # Progetto Basi di Dati
 ## VideoTech-A
- _Studenti:_ Matteo Piccadaci [514430] e Antonino Mastronardo [513936]
+ _**Studenti:**_ Matteo Piccadaci [514430] e Antonino Mastronardo [513936]
 
 Si vuole realizzare una base di dati per una videoteca, il cui locale fisico è accessibile dal lunedì al sabato, dalle ore 8:30 alle ore 19:30.
 I contenuti messi a disposizione degli utenti sono Film e Album Musicali, di vario genere.
@@ -65,12 +65,12 @@ Le tre generalizzazioni presenti sono state trattate accorpando il genitore dell
 
 &nbsp;
 ## Traduzione verso il modello relazionale:
-- Acquisti_album (ID_Acquisto, Data acquisto, Cliente, Articolo, Quantità)
-- Acquisti_film (ID_Acquisto, Data acquisto, Cliente, Articolo, Quantità)
-- Album (ID_Album, Nome album, Genere, Anno di pubblicazione, Quantità copie, Prezzo acquisto, Casa Discografica, Musicista*)
-- Amministratori (ID_Amministratore, Nome, Cognome, Data di nascita, Mail, Password)
-- Clienti (ID_Cliente, Nome, Cognome, Data di nascita, Mail, Password)
-- Fedelta (ID_Carta, Data adesione, Cliente*)
-- Film (ID_Film, Nome film, Genere, Anno di pubblicazione, Quantità copie, Prezzo acquisto, Produttore, Regista*)
-- Musicisti (ID_Musicista, Nome musicista, N°componenti)
-- Registi (ID_Regista, Nome, Cognome)
+- <font color="Green">_Acquisti_album_</font> (<ins>**ID_Acquisto**</ins>, Data acquisto, Cliente, Articolo, Quantità)
+- _Acquisti_film_ (<ins>**ID_Acquisto**</ins>, Data acquisto, Cliente, Articolo, Quantità)
+- _Album_ (<ins>**ID_Album**</ins>, Nome album, Genere, Anno di pubblicazione, Quantità copie, Prezzo acquisto, Casa Discografica, **Musicista***)
+- _Amministratori_ (<ins>**ID_Amministratore**</ins>, Nome, Cognome, Data di nascita, Mail, Password)
+- _Clienti_ (<ins>**ID_Cliente**</ins>, Nome, Cognome, Data di nascita, Mail, Password)
+- _Fedelta_ (<ins>**ID_Carta**</ins>, Data adesione, **Cliente***)
+- _Film_ (<ins>**ID_Film**</ins>, Nome film, Genere, Anno di pubblicazione, Quantità copie, Prezzo acquisto, Produttore, **Regista***)
+- _Musicisti_ (<ins>**ID_Musicista**</ins>, Nome musicista, N°componenti)
+- _Registi_ (<ins>**ID_Regista**</ins>, Nome, Cognome)
