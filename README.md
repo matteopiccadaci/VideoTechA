@@ -21,8 +21,8 @@ I clienti, se hanno compiuto almeno il 16° di età, potranno autenticarsi trami
 | Piattaforma                        |Interfaccia utente del DBMS realizzato per l’esercizio|     Gestionale     |    Amministratore, Cliente, Guest    |
 | Cliente                            |Utente con possibilità di acquisto e noleggio| Utente Autenticato | Piattaforma, Carta Fedeltà, Acquisto |
 | Guest                              |Utente con limitate possibilità di navigazione all’interno della piattaforma|       Ospite       |             Piattaforma              |
-| Film                               |Articolo audiovisivo caratterizzato da alcuni attributi|      Prodotto      |          Acquisto, Artista           |
-| Album                              |Articolo audio caratterizzato da alcuni attributi|      Prodotto      |          Acquisto, Artista           |
+| Film                               |Articolo audiovisivo caratterizzato da alcuni attributi|      Articolo      |          Acquisto, Artista           |
+| Album                              |Articolo audio caratterizzato da alcuni attributi|      Articolo      |          Acquisto, Artista           |
 | Regista                            |Persona che ha realizzato un film|      Artista       |               Articolo               |
 | Musicista                          |Persona o gruppo di persone che hanno realizzato un album musicale|      Artista       |               Articolo               |
 
