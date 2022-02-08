@@ -15,12 +15,12 @@ I clienti, se hanno compiuto almeno il 16° di età, potranno autenticarsi trami
 ### Glossario:
 | <font color="Green">Termine</font> | Descrizione |      Sinonimo      |          Collegamenti          |
 |:-----------------------------------|    :----:   |:------------------:|:------------------------------:|
-| Superadmin                         | Utente in possesso di tutti dei privilegi       |    Proprietario    |              ...               |
-| Amministratore                     | Utente in possesso della maggior parte dei privilegi, che può gestire gli ordini        |      Gestore       |              ...               |
+| Superadmin                         | Utente in possesso di tutti dei privilegi       |    Proprietario    |                                |
+| Amministratore                     | Utente in possesso della maggior parte dei privilegi, che può gestire gli ordini        |      Gestore       |                                |
 | Carta Fedeltà                      |Tessera su sottoscrizione che permette di accedere ad alcuni sconti|      Fidelity      |            Cliente             |
 | Piattaforma                        |Interfaccia utente del DBMS realizzato per l’esercizio|     Gestionale     | Amministratore, Cliente, Guest |
 | Cliente                            |Utente con possibilità di acquisto e noleggio| Utente Autenticato |    Carta Fedeltà, Acquisto     |
-| Guest                              |Utente con limitate possibilità di navigazione all’interno della piattaforma|       Ospite       |              ...               |
+| Guest                              |Utente con limitate possibilità di navigazione all’interno della piattaforma|       Ospite       |                                |
 | Film                               |Articolo audiovisivo caratterizzato da alcuni attributi|      Prodotto      |       Acquisto, Artista        |
 | Album                              |Articolo audio caratterizzato da alcuni attributi|      Prodotto      |       Acquisto, Artista        |
 | Regista                            |Persona che ha realizzato un film|      Artista       |            Articolo            |
