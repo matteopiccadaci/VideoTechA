@@ -71,8 +71,8 @@ if(isset($_POST['conferma'])){
     $album=$_POST['album'];
     $quantita=$_POST['quantitainput'];
     $data_oggi= date("Y-m-d");
-        $queryacquisto= "INSERT INTO Acquisti_album  (data_acquisto, cliente, articolo)
-                VALUES ('$data_oggi','$id','$album')";
+        $queryacquisto= "INSERT INTO Acquisti_album  (data_acquisto, cliente, articolo, quantita)
+                VALUES ('$data_oggi','$id','$album', '$quantita')";
         $queryvecchiaquantita="SELECT quantita_copie
         FROM Album
         WHERE id_album='$album'";

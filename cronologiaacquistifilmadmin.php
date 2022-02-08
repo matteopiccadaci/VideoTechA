@@ -3,8 +3,8 @@ require_once('php/cofig.php');
 session_start();
 $id=$_SESSION['id'];
 $queryiden="SELECT nome, cognome
-FROM Amministratori
-WHERE id_amministratore='$id'";
+FROM Clienti
+WHERE id_cliente='$id'";
 $res=$connex_db->query($queryiden);
 $credenziali=mysqli_fetch_array($res, MYSQLI_ASSOC);
 $nome=$credenziali['nome'];
@@ -44,13 +44,16 @@ $cognome=$credenziali['cognome'];
             </li>
 
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="homeadmin.php" class="nav-link bi bi-house me-1"> Home</a>
-            </li>
-
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="nuovoadmin.php" class="nav-link bi bi-person-plus-fill me-1"> Inserisci un nuovo amministratore</a>
+                <a href="index.php" class="nav-link bi bi-house me-1"> Home</a>
             </li>
             <form class="">
+                <?php
+                if(isset($_SESSION['id'])){
+                    echo'<li class="nav-item d-none d-sm-inline-block">
+                <a href="index.php" class="nav-link bi bi-cart me-1"> Carrello</a>
+            </li>';}
+                ?>
+
                 <?php
 
                 if(isset($_SESSION['id'])){
@@ -130,7 +133,6 @@ $cognome=$credenziali['cognome'];
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
                     <?php if(isset($_SESSION['id'])){
                         echo ' <li class="nav-item">
                                         <a href="#" class="nav-link" style="width: 270px">
@@ -157,7 +159,6 @@ $cognome=$credenziali['cognome'];
                                         </ul>
                                     </li>' ;}
                     ?>
-
 
 
                     <li class="nav-item">
@@ -199,9 +200,7 @@ $cognome=$credenziali['cognome'];
                             </p>
                         </a>
                     </li>
-                </ul>
 
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
                         <a href="admintable.php" class="nav-link" style="width: 270px">
                             <i class="nav-icon fas fa-calendar-alt"></i>
@@ -220,64 +219,56 @@ $cognome=$credenziali['cognome'];
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper" style="padding-left: 50px">
+        <div class="form-inline" style="float: right">
+<span class="d-none d-lg-inline">
+    <input class="form-control form-control-sidebar" type="search" id="cercacliente" onkeyup="myFunction3()" placeholder="Cerca Cliente" title="Cerca Cliente">
+<!-- <input class="form-control form-control-sidebar" type="search" id="cercaartista" onkeyup="myFunction2()" placeholder="Cerca Regista..." title="Cerca Artista"> -->
+<input class="form-control form-control-sidebar" type="search" id="cercanome" onkeyup="myFunction1()" placeholder="Cerca Film..." title="Cerca Nome">
+<input class="form-control form-control-sidebar" type="search" id="cercaanno" onkeyup="myFunction4()" placeholder="Cerca per data..." title="Cerca Anno">
+</span>
+        </div>
 
         <?php
+        $queryacquisti="SELECT Acquisti_film.data_acquisto, Film.nome_film, Acquisti_film.quantita, Registi.nome, Registi.cognome, Film.prezzo_acquisto, Clienti.nome, Clienti.cognome, Acquisti_film.cliente
+        FROM Acquisti_film JOIN Film on Acquisti_film.articolo=Film.id_film JOIN Registi on Film.regista=Registi.id_regista JOIN Clienti on Acquisti_film.cliente=Clienti.id_cliente
+        ORDER BY data_acquisto";
 
-
-
-        $queryadmin="SELECT Musicisti.nome_musicista, Album.id_album, Album.nome_album, Album.genere_album, Album.anno_pubblicazione,Album.quantita_copie, Album.casa_discografica, Album.prezzo_acquisto
-        FROM Album join Musicisti on Album.musicista = Musicisti.id_musicista
-        ORDER BY id_album";
-
-        $admin=$connex_db->query($queryadmin);
-        $arradmin=mysqli_fetch_array($admin, MYSQLI_ASSOC);
+        $ute=$connex_db->query($queryacquisti);
+        $arrute=mysqli_fetch_array($ute, MYSQLI_ASSOC);
 
 
         if(isset($_SESSION['id'])){
-            echo '<div>
-<button  type="button" name="aggiungi" class="btn btn-dark"> <a style="color: white" href="aggiungialbum.php"> Inserisci nuovo album </a></button>
-<button  type="button" name="aggiungi" class="btn btn-dark"> <a style="color: white" href="copiealbum.php"> Modifica la quantità di copie </a></button>
-   
-  
-  <div class="form-inline" style="float: right"><span class="d-none d-lg-inline"><input class="form-control form-control-sidebar" type="search" id="cercanome" onkeyup="myFunction1()" placeholder="Cerca Album..." title="Cerca Nome">
-  <input class="form-control form-control-sidebar" type="search" id="cercaartista" onkeyup="myFunction2()" placeholder="Cerca Artista..." title="Cerca Artista">
-  <input class="form-control form-control-sidebar" type="search" id="cercagenere" onkeyup="myFunction3()" placeholder="Cerca Genere..." title="Cerca Genere"></span></div>
-  
-</div> ';
-
-
 
             echo '<div style="overflow:auto;max-height: 800px;max-width: 1100px; min-width: 1100px">
 <table id="album" class="table table-hover" style="width: 1100px">
 <thead>
 <tr>
-<th scope="col"> COD </th>
-<th scope="col"> NOME</th>
-<th scope="col"> ARTISTA </th>
-<th scope="col">GENERE</th>
-<th scope="col">ANNO</th>
-<th scope="col">CASA DISCOGRAFICA</th>
-<th scope="col">PREZZO ACQUISTO</th>
-<th scope="col">QUANTITÀ</th>
+<th scope="col"> CLIENTE</th>
+<!-- <th scope="col"> REGISTA </th> -->
+<th scope="col"> FILM </th>
+<th scope="col"> QUANTITA</th>
+<th scope="col"> PREZZO PER CP.</th>
+<th scope="col">DATA</th>
 </tr>
 </thead>
-';
-            if($admin=$connex_db->query($queryadmin)){
-                while($arradmin=mysqli_fetch_array($admin, MYSQLI_ASSOC)) {
-
-                    echo "<tr><th scope='row'>" .$arradmin['id_album']. "</th><th scope='row'>" . $arradmin['nome_album'] . "</th><th scope='row'>" .$arradmin['nome_musicista']. "</th><th scope='row' style='alignment: center'>" . $arradmin['genere_album'] . "</th>
-                          <th scope='row'>" . $arradmin['anno_pubblicazione'] . "</th>
-                          <th scope='row'>" . $arradmin['casa_discografica'] . "</th>
-                              <th scope='row'>" . $arradmin['prezzo_acquisto'] . "</th>
-                          <th scope='row' >" . $arradmin["quantita_copie"]. "</th>
-                        </tr>";
-                }}
-                $admin->free();
+            ';
+            if($ute=$connex_db->query($queryacquisti)){
+                while($arrute=mysqli_fetch_array($ute, MYSQLI_ASSOC)) {
+                    echo "<tr><th scope='row'>    " .$arrute['cliente']. " " . '-' . "  "   .$arrute['nome']. "    " .$arrute['cognome']. "    </th>
+                           <!-- <th scope='row'>" .$arrute['Registi.nome']. "  " .$arrute['Registi.cognome']. "</th> -->
+                           <th scope='row'>" .$arrute['nome_film']. "</th>
+                           <th scope='row'>" .$arrute['quantita']. "</th>
+                           <th scope='row'>" . $arrute['prezzo_acquisto'] . "</th>
+                           <th scope='row'>" . $arrute['data_acquisto'] . "</th>
+                         </tr>";
+                }
+                $ute->free();
             }
+        }
         ?>
     </div>
-    </div>
-
+</div>
+</div>
 
 
 </div>
@@ -308,7 +299,6 @@ $cognome=$credenziali['cognome'];
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard3.js"></script>
-
 <script>
     function myFunction1() {
         var input, filter, table, tr, th, i, txtValue;
@@ -340,7 +330,7 @@ $cognome=$credenziali['cognome'];
         table = document.getElementById("album");
         tr = table.getElementsByTagName("tr");
         for (i = 0; i < tr.length; i++) {
-            th = tr[i].getElementsByTagName("th")[2];
+            th = tr[i].getElementsByTagName("th")[1];
             if (th) {
                 txtValue = th.textContent || th.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -358,12 +348,33 @@ $cognome=$credenziali['cognome'];
 <script>
     function myFunction3() {
         var input, filter, table, tr, th, i, txtValue;
-        input = document.getElementById("cercagenere");
+        input = document.getElementById("cercacliente");
         filter = input.value.toUpperCase();
         table = document.getElementById("album");
         tr = table.getElementsByTagName("tr");
         for (i = 0; i < tr.length; i++) {
-            th = tr[i].getElementsByTagName("th")[3];
+            th = tr[i].getElementsByTagName("th")[0];
+            if (th) {
+                txtValue = th.textContent || th.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+<script>
+    function myFunction4() {
+        var input, filter, table, tr, th, i, txtValue;
+        input = document.getElementById("cercaanno");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("album");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            th = tr[i].getElementsByTagName("th")[4];
             if (th) {
                 txtValue = th.textContent || th.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {

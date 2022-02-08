@@ -117,7 +117,8 @@ $cognome=$credenziali['cognome'];
                     FROM Fedelta
                     WHERE cliente='" . $_SESSION['id'] . "'";
                         if(isset($_SESSION['id'])){
-                        if($arrfed=$connex_db->query($queryfed)){
+                            $arrfed=$connex_db->query($queryfed);
+                            if($arrfed->num_rows!=0){
                             echo "<div style='font-size: 13px'>Cliente fedele  <i class='bi bi-postcard'></i></div>";
                         }
                     }}
@@ -172,6 +173,32 @@ $cognome=$credenziali['cognome'];
                                     </li>' ;}
                     ?>
 
+                    <?php if(isset($_SESSION['id'])){
+                        echo ' <li class="nav-item">
+                                        <a href="#" class="nav-link" style="width: 270px">
+                                            <i class="nav-icon fas fa-copy"></i>
+                                                     <p>
+                                               <i class="bi bi-clock-history"></i>
+                                                Cronologia Acquisti
+                                                <i class="fas fa-angle-left right"></i>
+                                            </p>
+                                            </a>
+                                        <ul class="nav nav-treeview">
+                                            <li class="nav-item">
+                                                <a href="cronologiaacquistialbum.php" class="nav-link" style="width: 270px">
+                                                    <i class="fa-solid fa-cart-arrow-down"></i>
+                                                    <p> Album musicali acquistati</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="cronologiaacquistifilm.php" class="nav-link" style="width: 270px">
+                                                    <i class="far fa-circle nav-icon"></i>
+                                                    <p>Film acquistati</p>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>' ;}
+                    ?>
 
                     <li class="nav-item">
                         <a href="catalogoalbum.php" class="nav-link" style="width: 270px">
@@ -217,6 +244,10 @@ $cognome=$credenziali['cognome'];
                                 <i class="far fa-circle nav-icon"></i>
                                 <p class="nav-link" style="font-size: 14; width: 270px">Tel: 0806623056</p>
                             </li>
+                            <li class="nav-item">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p class="nav-link" style="font-size: 14; width: 270px">Aperto Lun-Sab: 8:30 - 19:30</p>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -254,7 +285,7 @@ $cognome=$credenziali['cognome'];
 
         if(isset($_SESSION['id'])){
 
-        echo '<div style="max-height: 800px">
+        echo '<div style="overflow:auto;max-height: 800px;max-width: 1100px; min-width: 1100px">
 <table id="album" class="table table-hover" style="width: 1100px">
 <thead>
 <tr>
@@ -286,7 +317,7 @@ $cognome=$credenziali['cognome'];
         }
         }
         else{
-            echo '<div style="max-height: 800px">
+            echo '<div style="overflow:auto;max-height: 800px;max-width: 1100px; min-width: 1100px">
 <table id="album" class="table table-hover" style="width: 1100px">
 <thead>
 <tr>

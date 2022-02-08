@@ -132,7 +132,7 @@ $cognome=$credenziali['cognome'];
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                     <?php if(isset($_SESSION['id'])){
-                        echo ' <li class="nav-item" >
+                        echo ' <li class="nav-item">
                                         <a href="#" class="nav-link" style="width: 270px">
                                             <i class="nav-icon fas fa-copy"></i>
                                                      <p>
@@ -143,20 +143,21 @@ $cognome=$credenziali['cognome'];
                                             </a>
                                         <ul class="nav nav-treeview">
                                             <li class="nav-item">
-                                                <a href="pages/layout/top-nav.html" class="nav-link" style="width: 270px">//mettere link acquisti
+                                                <a href="cronologiaacquistialbumadmin.php" class="nav-link" style="width: 270px">
                                                     <i class="fa-solid fa-cart-arrow-down"></i>
-                                                    <p>Acquisti</p>
+                                                    <p> Acquisti Album</p>
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="pages/layout/top-nav-sidebar.html" class="nav-link" style="width: 270px">//mettere link noleggi
+                                                <a href="cronologiaacquistifilmadmin.php" class="nav-link" style="width: 270px">
                                                     <i class="far fa-circle nav-icon"></i>
-                                                    <p>Noleggi</p>
+                                                    <p> Acquisti film</p>
                                                 </a>
                                             </li>
                                         </ul>
-                                    </li>';}
+                                    </li>' ;}
                     ?>
+
 
 
 
@@ -234,8 +235,8 @@ $cognome=$credenziali['cognome'];
         if(isset($_SESSION['id'])){
 
             echo '<div>
-<button  type="button" name="aggiungi" class="btn btn-dark"> <a style="color: white" href="aggiungialbum.php"> Inserisci nuovo album </a></button>
-<button  type="button" name="aggiungi" class="btn btn-dark"> <a style="color: white" href="copiealbum.php"> Modifica la quantità di copie </a></button>
+<button  type="button" name="aggiungi" class="btn btn-dark"> <a style="color: white" href="aggiungifilm.php"> Inserisci nuovo album </a></button>
+<button  type="button" name="aggiungi" class="btn btn-dark"> <a style="color: white" href="copiefilm.php"> Modifica la quantità di copie </a></button>
    
   
   <div class="form-inline" style="float: right"><span class="d-none d-lg-inline">
@@ -247,7 +248,7 @@ $cognome=$credenziali['cognome'];
   </div>
  ';
 
-            echo '<div style="overflow: auto; max-height: 800px">
+            echo '<div style="overflow:auto;max-height: 800px;max-width: 1100px; min-width: 1100px">
 <table id="film" class="table table-hover" style="width: 1100px">
 <thead>
 <tr>
@@ -293,11 +294,11 @@ $cognome=$credenziali['cognome'];
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="src/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="src/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE -->
-<script src="dist/js/adminlte.js"></script>
+<script src="src/dist/js/adminlte.js"></script>
 
 <!-- OPTIONAL SCRIPTS -->
 <script src="plugins/chart.js/Chart.min.js"></script>

@@ -2,24 +2,35 @@
 require_once ("php/cofig.php");
 session_start();
 $id=$_SESSION['id'];
-$queryfilm="SELECT nome_film
-FROM Film
-ORDER BY nome_film";
-$tr=$connex_db->query($queryfilm);
+if(isset($_GET['ajax'])){
+$out="";
+if($_GET['ajax']==1){
+    $queryfilm = "SELECT id_film, nome_film
+                FROM Film 
+                WHERE  regista='" . $_GET['id'] . " '";
+    $al = $connex_db->query($queryfilm);
+    $out.="<option disabled selected>Film</option>";
+    while ($films = mysqli_fetch_array($al, MYSQLI_ASSOC)) {
+        $out.="<option value='" . $films['id_film'] . "'>" . $films['nome_film'] . "</option>";
+
+    }
+    echo $out;
+    exit();
+}}
 if(isset($_POST['conferma'])){
-    $nome=$_POST['film'];
+    $id=$_POST['film'];
     $regista=$_POST['regista'];
     $modifica=$_POST['quantita'];
     $prezzo=$_POST['prezzo'];
     $key=$_POST['key'];
     if ($key!='I%$hmn56hy!'){
-        echo "<script> alert ('Inserimento non avvenuto: Qualcosa è andato storto...'); window.location.replace('/aggiungiregista.php')</script>";
+        echo "<script> alert ('Inserimento non avvenuto: Qualcosa è andato storto...'); window.location.replace('/copiefilm.php')</script>";
     }
     else
     {
         $querycopie="SELECT quantita_copie
                         FROM Film
-                        WHERE nome_film='$nome'";
+                        WHERE id_film='$id'";
         $cp=$connex_db->query($querycopie);
         $arrvc=mysqli_fetch_array($cp, MYSQLI_ASSOC);
         $vecchiecopie=$arrvc['quantita_copie'];
@@ -28,8 +39,8 @@ if(isset($_POST['conferma'])){
             $quantita=0;
         }
         $queryinserimento="UPDATE Film
-        SET quantita_copie=$quantita, prezzo_acquisto=$prezzo
-        WHERE nome_film='$nome'";
+        SET quantita_copie='$quantita', prezzo_acquisto='$prezzo'
+        WHERE id_film='$id'";
 
         if ($result=$connex_db->query($queryinserimento)){
             echo "<script> alert('Modifiche apportate correttamente!'); window.location.replace('/catalogofilmadmin.php')</script>";
@@ -80,22 +91,29 @@ if (isset($_POST['indietro'])){
     <!-- /.login-logo -->
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg">Modifica quantità e prezzo delle copie di un album</p>
+            <p class="login-box-msg">Modifica quantità e prezzo delle copie di un film</p>
             <form method="post">
                 <div class="row g-3">
+                    <div class="col-md-12">
+                        <label for="regista" class="form-label">Regista</label>
+                        <select class="form-select" aria-label="Default select example" id="regista" name="regista">
+                            <option selected>Seleziona Regista...</option>
+                            <?php
+                            $queryartisti="SELECT id_regista, nome, cognome
+                                            FROM Registi";
+                            $ar=$connex_db->query($queryartisti);
+                            while ($artisti=mysqli_fetch_array($ar, MYSQLI_ASSOC))
+                            {
+                                echo "<option value='". $artisti['id_regista'] . "'>" . $artisti['nome'] .  " "  .  $artisti['cognome'] . "</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
                     <div class="col-md-12">
                         <label for="film" class="form-label">Film</label>
                         <select class="form-select" aria-label="Default select example" id="film" name="film">
                             <option selected>Seleziona Film...</option>
-                            <?php
-                            while ($film=mysqli_fetch_array($tr, MYSQLI_ASSOC))
-                            {
-                                echo "<option>" . $film['nome_film'] . "</option>";
-                            }
-
-                            ?>
                         </select>
-
                     </div>
                     <div class="col-md-12">
                         <label for="quantita" class="form-label">Quantità</label>
@@ -124,11 +142,25 @@ if (isset($_POST['indietro'])){
     <!-- /.login-box -->
 
     <!-- jQuery -->
-    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <script src="src/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="src/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="../../dist/js/adminlte.min.js"></script>
+    <script src="src/dist/js/adminlte.min.js"></script>
+    <script>
+        $(document).on('change', '#regista', function (){
+            var id=$('#regista option:selected').attr("value");
+            $.ajax({
+                type:"get",
+                data:{id:id, ajax:1},
+                success: function (response){
+                    $('#film').empty();
+                    $('#film').html(response);
+                }
+            })
+
+        })
+            </script>
 
 </body>
 </html>

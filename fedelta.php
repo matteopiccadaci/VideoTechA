@@ -14,8 +14,10 @@ WHERE Clienti.id_cliente='$id'";
     $res2=$connex_db->query($queryfedelta);
     $fedelta=mysqli_fetch_array($res2, MYSQLI_ASSOC);
     $clientefed=$fedelta['cliente'];
-    $data_oggi= date("Y-m-d");
-    $eta=(date("md", date("U", mktime(0,0,0, $data_t[0], $data_t[1], $data_t[2]))) > date("md") ? ((date("Y")-$data_t[2])-1) : (date("Y") - $data_t[2]));
+    $data_t=new DateTime($data['data_nascita']);
+    $data_oggi= new DateTime (date("Y-m-d"));
+    $eta=$data_t->diff($data_oggi)->y;
+
     ?>
 
 <!doctype html>
@@ -72,6 +74,7 @@ WHERE Clienti.id_cliente='$id'";
                                 $queryinsert= "INSERT INTO Fedelta (data_adesione, cliente)
                  VALUES ('$data_oggi', '$id')";
                                 if ($inserimento=$connex_db->query($queryinsert)){
+                                    echo "<script>window.location.replace('/fedelta.php')</script>";
                                     echo  'Iscrizione al programma fedeltà di VideoTech-A avvenuto con successo! Ora per ogni acquisto riceverai uno sconto! Grazie per il supporto.';
                                 }
                             }

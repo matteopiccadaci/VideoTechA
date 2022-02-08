@@ -2,8 +2,6 @@
 require_once ("php/cofig.php");
 session_start();
 $id=$_SESSION['id'];
-
-
 if(isset($_GET['ajax'])){
     $out="";
     if($_GET['ajax']==1){
@@ -71,8 +69,8 @@ if(isset($_POST['conferma'])){
     $film=$_POST['film'];
     $quantita=$_POST['quantitainput'];
     $data_oggi= date("Y-m-d");
-    $queryacquisto= "INSERT INTO Acquisti_film (data_acquisto, cliente, articolo)
-                VALUES ('$data_oggi','$id','$film')";
+    $queryacquisto= "INSERT INTO Acquisti_film (data_acquisto, cliente, articolo, quantita)
+                VALUES ('$data_oggi','$id','$film', '$quantita')";
     $queryvecchiaquantita="SELECT quantita_copie
         FROM Film
         WHERE id_film='$film'";
