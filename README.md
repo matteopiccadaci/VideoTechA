@@ -1,6 +1,6 @@
 # Progetto Basi di Dati
 ## VideoTech-A
-####_Studenti:_ Matteo Piccadaci [514430] e Antonino Mastronardo [513936]
+#### _Studenti:_ Matteo Piccadaci [514430] e Antonino Mastronardo [513936]
 
 Si vuole realizzare una base di dati per una videoteca, il cui locale fisico è accessibile dal lunedì al sabato, dalle ore 8:30 alle ore 19:30.
 I contenuti messi a disposizione degli utenti sono Film e Album Musicali, di vario genere.
@@ -11,7 +11,7 @@ I due sconti, tuttavia, non sono cumulabili: il cliente dovrà in ogni caso paga
 I clienti, se hanno compiuto almeno il 16° di età, potranno autenticarsi tramite codice univoco e password al momento del login al sito. È invece previsto un altro pulsante d’accesso per gli amministratori dell’esercizio, i quali dovranno autenticarsi tramite credenziali. Essi potranno visualizzare gli articoli venduti e le scorte presenti in magazzino.
 È anche previsto un accesso in modalità guest, senza alcun tipo di autenticazione, nella quale sarà possibile accedere solamente alle informazioni riguardo l’esercizio e al catalogo degli articoli.
 
-###Glossario:
+### Glossario:
 | Termine        | Descrizione |      Sinonimo      |          Collegamenti          |
 |:---------------|    :----:   |:------------------:|:------------------------------:|
 | Superadmin     | Utente in possesso di tutti dei privilegi       |    Proprietario    |              ...               |
@@ -27,7 +27,7 @@ I clienti, se hanno compiuto almeno il 16° di età, potranno autenticarsi trami
 
 
 
-##Lista delle operazioni:
+## Lista delle operazioni:
 
 - Login: In base al pulsante premuto, permette di autenticarsi come cliente o amministratore (Operazione effettuata molto frequentemente)
 
@@ -55,12 +55,12 @@ I clienti, se hanno compiuto almeno il 16° di età, potranno autenticarsi trami
 
 - Acquista album/film: Permette di acquistare un prodotto. L’operazione inoltra aggiorna in automatico la quantità di quel prodotto in magazzino (Operazione riservata ai clienti, realizzata molto frequentemente)
 
-##Ristrutturazione schema ER:
+## Ristrutturazione schema ER:
 Si è dapprima optato per delle valutazioni che aumentassero la qualità del DB, eliminando le eventuali ridondanze presenti.
 Le tre generalizzazioni presenti sono state trattate accorpando il genitore delle generalizzazioni alle figlie.
 
 
-##Traduzione verso il modello relazionale:
+## Traduzione verso il modello relazionale:
 
 Acquisti_album (ID_Acquisto, Data acquisto, Cliente, Articolo, Quantità)
 Acquisti_film (ID_Acquisto, Data acquisto, Cliente, Articolo, Quantità)
