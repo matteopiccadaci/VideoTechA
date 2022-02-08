@@ -67,8 +67,8 @@ Le tre generalizzazioni presenti sono state trattate accorpando il genitore dell
 
 &nbsp;
 ## Traduzione verso il modello relazionale:
-- <font color="Green">_Acquisti_album_</font> (<ins>**ID_Acquisto**</ins>, Data acquisto, Cliente, Articolo, Quantità)
-- _Acquisti_film_ (<ins>**ID_Acquisto**</ins>, Data acquisto, Cliente, Articolo, Quantità)
+- <font color="Green">_Acquisti_album_</font> (<ins>**ID_Acquisto**</ins>, Data acquisto, **Cliente***, **Articolo***, Quantità)
+- _Acquisti_film_ (<ins>**ID_Acquisto**</ins>, Data acquisto, **Cliente***, **Articolo***, Quantità)
 - _Album_ (<ins>**ID_Album**</ins>, Nome album, Genere, Anno di pubblicazione, Quantità copie, Prezzo acquisto, Casa Discografica, **Musicista***)
 - _Amministratori_ (<ins>**ID_Amministratore**</ins>, Nome, Cognome, Data di nascita, Mail, Password)
 - _Clienti_ (<ins>**ID_Cliente**</ins>, Nome, Cognome, Data di nascita, Mail, Password)
