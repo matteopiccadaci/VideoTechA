@@ -16,7 +16,7 @@ I clienti, se hanno compiuto almeno il 16° di età, potranno autenticarsi trami
 | <font color="Green">Termine</font> | Descrizione |      Sinonimo      |          Collegamenti          |
 |:-----------------------------------|    :----:   |:------------------:|:------------------------------:|
 | Superadmin                         | Utente in possesso di tutti dei privilegi       |    Proprietario    |                                |
-| Amministratore                     | Utente in possesso della maggior parte dei privilegi, che può gestire gli ordini        |      Gestore       |                                |
+| Amministratore                     | Utente in possesso della maggior parte dei privilegi, che può gestire gli ordini        |       Admin        |                                |
 | Carta Fedeltà                      |Tessera su sottoscrizione che permette di accedere ad alcuni sconti|      Fidelity      |            Cliente             |
 | Piattaforma                        |Interfaccia utente del DBMS realizzato per l’esercizio|     Gestionale     | Amministratore, Cliente, Guest |
 | Cliente                            |Utente con possibilità di acquisto e noleggio| Utente Autenticato |    Carta Fedeltà, Acquisto     |
@@ -40,7 +40,7 @@ I clienti, se hanno compiuto almeno il 16° di età, potranno autenticarsi trami
 
 - Elimina amministratore: Permette di eliminare un admin (Operazione riservata ai super-admin, realizzata raramente)
 
-- Cambia password: Permette l’aggiornamento della password degli amministratori (Operazione riservata agli admin, realizzata raramente)
+- Cambia password: Permette l’aggiornamento della password degli amministratori e degli utenti (Operazione riservata agli admin, realizzata raramente)
 
 - Catalogo album e Catalogo film: In base alla modalità di accesso, permette di accedere alle informazioni riguardo la disponibilità di prodotti al negozio (Operazione realizzata frequentemente)
 
