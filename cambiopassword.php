@@ -2,34 +2,30 @@
 require_once ("php/cofig.php");
 session_start();
 $id=$_SESSION['id'];
-$queryadmin="SELECT id_amministratore
-FROM Amministratori";
-$ar=$connex_db->query($queryadmin);
+$queryvecchia="SELECT pass
+FROM Clienti
+WHERE id_cliente='$id'";
+$ar=$connex_db->query($queryvecchia);
+$vc=mysqli_fetch_array($ar, MYSQLI_ASSOC);
+$vecchia=$vc['pass'];
 $idmodifca=$id;
 if(isset($_POST['conferma'])){
-    $key=$_POST['key'];
-    $nuovapassword=$_POST['nuovapassword'];
-    if ($key!='I%$hmn56hy!'){
-        echo "<script> alert ('Qualcosa è andato storto...');
-    window.location.replace('/homeadmin.php')</script>";
-    }
-    else{
-        if($_SESSION['id']==3 || $_SESSION['id']==1){
-            $idmodifca=$_POST['superadmin'];
+    $nuova=$_POST['nuova'];
+    $vecchiainserita=$_POST['vecchia'];
+    if (!(password_verify($vecchiainserita, $vecchia))){
+         echo "<script> alert ('Qualcosa è andato storto...');
+    window.location.replace('/cambiopassword.php')</script>";
         }
-        $nuovapassword_hash = password_hash($nuovapassword, PASSWORD_BCRYPT);// hashing password
+    else{
+        $nuovapassword_hash = password_hash($nuova, PASSWORD_BCRYPT);// hashing password
 
-        $querypassword="UPDATE Amministratori
-                        SET password = '$nuovapassword_hash'
-                        WHERE id_amministratore='$idmodifca'";
+        $querypassword="UPDATE Clienti
+                        SET pass = '$nuovapassword_hash'
+                        WHERE id_cliente='$id'";
         if ($result=$connex_db->query($querypassword)){
-            echo "<script> alert('Password aggiornata correttamente!'); window.location.replace('/homeadmin.php')</script>";
+            echo "<script> alert('Password aggiornata correttamente!'); window.location.replace('/index.php')</script>";
         }
     } //aggiornamento password avvenuto con successo
-}
-if (isset($_POST['indietro'])){
-    session_destroy();
-    header ("location:index.php");
 }
 ?>
 
@@ -75,31 +71,17 @@ if (isset($_POST['indietro'])){
             <form method="post">
                 <div class="row g-3">
                     <div class="col-md-12">
-                        <label for="nuovapassword" class="form-label">Nuova Password</label>
-                        <input type="password" class="form-control" id="nuovapassword" placeholder="Inserisci nuova password" name="nuovapassword">
+                        <label for="vecchiapassword" class="form-label">Vecchia Password</label>
+                        <input type="password" class="form-control" id="vecchia" placeholder="Inserisci la tua vecchia password" name="vecchia">
                     </div>
                     <div class="col-md-12">
-                        <?php
-                        if($_SESSION['id']==3 || $_SESSION['id']==1) {
-                        ?>
-                        <label for="superadmin" class="form-label">Super Admin</label>
-                        <select class="form-select" aria-label="Default select example" id="superadmin" name="superadmin">
-                            <option selected>Seleziona Super Admin...</option>
-                            <option>1</option>
-                            <option>3</option>
-                            <?php
-                            }
-                            ?>
-                        </select>
+                        <label for="nuovapassword" class="form-label">Nuova Password</label>
+                        <input type="password" class="form-control" id="nuova" placeholder="Inserisci la nuova password" name="nuova">
                     </div>
                     <br>
-                    <div class="col-12">
-                        <label for="text" class="form-label">Chiave</label>
-                        <input type="password" class="form-control" id="key" placeholder="Chiave" name="key">
-                    </div>
                     <input type="text" id="conferma" name="conferma" hidden value="1">
                     <button  type="submit" name="conferma" class="btn btn-primary"> Conferma </button>
-                    <button  type="sumbit" name="indietro" class="btn btn-danger"> Torna alla pagina principale</button>
+                    <button  type="sumbit" name="indietro" class="btn btn-danger"> <a href="index.php" style="color: white"> Torna alla pagina principale</a> </button>
                 </div>
 
 
@@ -114,9 +96,8 @@ if (isset($_POST['indietro'])){
     <!-- jQuery -->
     <script src="src/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="src/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src=".src/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="src/dist/js/adminlte.min.js"></script>
 
 </body>
-</html>

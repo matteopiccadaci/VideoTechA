@@ -47,12 +47,7 @@ $cognome=$credenziali['cognome'];
                 <a href="index.php" class="nav-link bi bi-house me-1"> Home</a>
             </li>
             <form class="">
-            <?php
-            if(isset($_SESSION['id'])){
-                echo'<li class="nav-item d-none d-sm-inline-block">
-                <a href="index.php" class="nav-link bi bi-cart me-1"> Carrello</a>
-            </li>';}
-            ?>
+
 
                 <?php
 
@@ -67,7 +62,15 @@ $cognome=$credenziali['cognome'];
             </li>';
 
                 }
-                ?></form>
+                ?>
+            <?php
+            if (isset($_SESSION['id'])) {
+                echo '<li class="nav-item d-none d-sm-inline-block">
+                <a href="cambiopassword.php" class="bi bi-key-fill" style="color: grey"> Cambia password</a>
+            </li>';
+            }
+            ?>
+            </form>
 
         </ul>
 
