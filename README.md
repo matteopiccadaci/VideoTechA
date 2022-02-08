@@ -10,7 +10,7 @@ Se l’età del cliente rientra in quella vista sopra, avrà diritto al 10% di s
 I due sconti, tuttavia, non sono cumulabili: il cliente dovrà in ogni caso pagare la cifra minore.
 I clienti, se hanno compiuto almeno il 16° di età, potranno autenticarsi tramite codice univoco e password al momento del login al sito. È invece previsto un altro pulsante d’accesso per gli amministratori dell’esercizio, i quali dovranno autenticarsi tramite credenziali. Essi potranno visualizzare gli articoli venduti e le scorte presenti in magazzino.
 È anche previsto un accesso in modalità guest, senza alcun tipo di autenticazione, nella quale sarà possibile accedere solamente alle informazioni riguardo l’esercizio e al catalogo degli articoli.
-
+<br>
 ### Glossario:
 | Termine        | Descrizione |      Sinonimo      |          Collegamenti          |
 |:---------------|    :----:   |:------------------:|:------------------------------:|
