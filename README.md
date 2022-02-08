@@ -13,18 +13,18 @@ I clienti, se hanno compiuto almeno il 16° di età, potranno autenticarsi trami
 
 &nbsp;
 ### Glossario:
-| <font color="Green">Termine</font> | Descrizione |      Sinonimo      |          Collegamenti          |
-|:-----------------------------------|    :----:   |:------------------:|:------------------------------:|
-| Superadmin                         | Utente in possesso di tutti dei privilegi       |    Proprietario    |                                |
-| Amministratore                     | Utente in possesso della maggior parte dei privilegi, che può gestire gli ordini        |       Admin        |                                |
-| Carta Fedeltà                      |Tessera su sottoscrizione che permette di accedere ad alcuni sconti|      Fidelity      |            Cliente             |
-| Piattaforma                        |Interfaccia utente del DBMS realizzato per l’esercizio|     Gestionale     | Amministratore, Cliente, Guest |
-| Cliente                            |Utente con possibilità di acquisto e noleggio| Utente Autenticato |    Carta Fedeltà, Acquisto     |
-| Guest                              |Utente con limitate possibilità di navigazione all’interno della piattaforma|       Ospite       |                                |
-| Film                               |Articolo audiovisivo caratterizzato da alcuni attributi|      Prodotto      |       Acquisto, Artista        |
-| Album                              |Articolo audio caratterizzato da alcuni attributi|      Prodotto      |       Acquisto, Artista        |
-| Regista                            |Persona che ha realizzato un film|      Artista       |            Articolo            |
-| Musicista                          |Persona o gruppo di persone che hanno realizzato un album musicale|      Artista       |            Articolo            |
+| <font color="Green">Termine</font> | Descrizione |      Sinonimo      |             Collegamenti             |
+|:-----------------------------------|    :----:   |:------------------:|:------------------------------------:|
+| Superadmin                         | Utente in possesso di tutti dei privilegi       |    Proprietario    |             Piattaforma              |
+| Amministratore                     | Utente in possesso della maggior parte dei privilegi, che può gestire gli ordini        |       Admin        |             Piattaforma              |
+| Carta Fedeltà                      |Tessera su sottoscrizione che permette di accedere ad alcuni sconti|      Fidelity      |               Cliente                |
+| Piattaforma                        |Interfaccia utente del DBMS realizzato per l’esercizio|     Gestionale     |    Amministratore, Cliente, Guest    |
+| Cliente                            |Utente con possibilità di acquisto e noleggio| Utente Autenticato | Piattaforma, Carta Fedeltà, Acquisto |
+| Guest                              |Utente con limitate possibilità di navigazione all’interno della piattaforma|       Ospite       |             Piattaforma              |
+| Film                               |Articolo audiovisivo caratterizzato da alcuni attributi|      Prodotto      |          Acquisto, Artista           |
+| Album                              |Articolo audio caratterizzato da alcuni attributi|      Prodotto      |          Acquisto, Artista           |
+| Regista                            |Persona che ha realizzato un film|      Artista       |               Articolo               |
+| Musicista                          |Persona o gruppo di persone che hanno realizzato un album musicale|      Artista       |               Articolo               |
 
 
 &nbsp;
@@ -38,9 +38,11 @@ I clienti, se hanno compiuto almeno il 16° di età, potranno autenticarsi trami
 
 - Inserisci nuovo amministratore: Permette di inserire un nuovo admin (Operazione riservata ai super-admin, realizzata raramente)
 
-- Elimina amministratore: Permette di eliminare un admin (Operazione riservata ai super-admin, realizzata raramente)
+- Elimina amministratore: Permette di eliminare un admin (Operazione riservata ai superadmin, realizzata raramente)
 
-- Cambia password: Permette l’aggiornamento della password degli amministratori e degli utenti (Operazione riservata agli admin, realizzata raramente)
+- Cambio password admin: Permette l’aggiornamento della password degli amministratori (Operazione riservata agli admin, realizzata raramente)
+
+- Cambio password utente: Permette l’aggiornamento della password degli utenti (Operazione riservata al cliente stesso, realizzata raramente)
 
 - Catalogo album e Catalogo film: In base alla modalità di accesso, permette di accedere alle informazioni riguardo la disponibilità di prodotti al negozio (Operazione realizzata frequentemente)
 
