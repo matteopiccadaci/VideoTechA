@@ -73,9 +73,9 @@ if (isset($_POST['indietro'])){
                 <div class="row g-3">
 
                     <div class="col-md-12">
-                        <label for="superadmin" class="form-label">Super Admin</label>
+                        <label for="superadmin" class="form-label">Admin</label>
                         <select class="form-select" aria-label="Default select example" id="adminbase" name="adminbase">
-                            <option selected>Seleziona Super Admin...</option>
+                            <option selected>Seleziona Admin...</option>
                             <?php
                             for($i=4;$i<=15;$i++){
                                 echo "<option>$i</option>";
