@@ -225,8 +225,7 @@ $cognome=$credenziali['cognome'];
         <?php
 
         $queryadmin="SELECT Registi.nome,Registi.cognome, Film.id_film, Film.nome_film, Film.genere, Film.anno_pubblicazione,Film.quantita_copie, Film.produttore, Film.prezzo_acquisto
-        FROM Film join Registi on Film.regista = Registi.id_regista
-        ORDER BY Registi.cognome, Film.anno_pubblicazione";
+        FROM Film join Registi on Film.regista = Registi.id_regista";
 
         $admin=$connex_db->query($queryadmin);
         $arradmin=mysqli_fetch_array($admin, MYSQLI_ASSOC);
@@ -235,7 +234,7 @@ $cognome=$credenziali['cognome'];
         if(isset($_SESSION['id'])){
 
             echo '<div>
-<button  type="button" name="aggiungi" class="btn btn-dark"> <a style="color: white" href="aggiungifilm.php"> Inserisci nuovo album </a></button>
+<button  type="button" name="aggiungi" class="btn btn-dark"> <a style="color: white" href="aggiungifilm.php"> Inserisci nuovo film </a></button>
 <button  type="button" name="aggiungi" class="btn btn-dark"> <a style="color: white" href="copiefilm.php"> Modifica la quantità di copie </a></button>
    
   
