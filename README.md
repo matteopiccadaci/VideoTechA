@@ -13,18 +13,18 @@ I clienti, se hanno compiuto almeno il 16° di età, potranno autenticarsi trami
 
 &nbsp;
 ### Glossario:
-| <font color="Green">Termine</font> | Descrizione |      Sinonimo      |             Collegamenti             |
-|:-----------------------------------|    :----:   |:------------------:|:------------------------------------:|
-| Superadmin                         | Utente in possesso di tutti dei privilegi       |    Proprietario    |             Piattaforma              |
-| Amministratore                     | Utente in possesso della maggior parte dei privilegi, che può gestire gli ordini        |       Admin        |             Piattaforma              |
-| Carta Fedeltà                      |Tessera su sottoscrizione che permette di accedere ad alcuni sconti|      Fidelity      |               Cliente                |
-| Piattaforma                        |Interfaccia utente del DBMS realizzato per l’esercizio|     Gestionale     |    Amministratore, Cliente, Guest    |
-| Cliente                            |Utente con possibilità di acquisto e noleggio| Utente Autenticato | Piattaforma, Carta Fedeltà, Acquisto |
-| Guest                              |Utente con limitate possibilità di navigazione all’interno della piattaforma|       Ospite       |             Piattaforma              |
-| Film                               |Articolo audiovisivo caratterizzato da alcuni attributi|      Articolo      |          Acquisto, Artista           |
-| Album                              |Articolo audio caratterizzato da alcuni attributi|      Articolo      |          Acquisto, Artista           |
-| Regista                            |Persona che ha realizzato un film|      Artista       |               Articolo               |
-| Musicista                          |Persona o gruppo di persone che hanno realizzato un album musicale|      Artista       |               Articolo               |
+| Termine | Descrizione |      Sinonimo      |             Collegamenti             |
+|:---------------|    :----:   |:------------------:|:------------------------------------:|
+| Superadmin     | Utente in possesso di tutti dei privilegi       |    Proprietario    |             Piattaforma              |
+| Amministratore | Utente in possesso della maggior parte dei privilegi, che può gestire gli ordini        |       Admin        |             Piattaforma              |
+| Carta Fedeltà  |Tessera su sottoscrizione che permette di accedere ad alcuni sconti|      Fidelity      |               Cliente                |
+| Piattaforma    |Interfaccia utente del DBMS realizzato per l’esercizio|     Gestionale     |    Amministratore, Cliente, Guest    |
+| Cliente        |Utente con possibilità di acquisto e noleggio| Utente Autenticato | Piattaforma, Carta Fedeltà, Acquisto |
+| Guest          |Utente con limitate possibilità di navigazione all’interno della piattaforma|       Ospite       |             Piattaforma              |
+| Film           |Articolo audiovisivo caratterizzato da alcuni attributi|      Articolo      |          Acquisto, Artista           |
+| Album          |Articolo audio caratterizzato da alcuni attributi|      Articolo      |          Acquisto, Artista           |
+| Regista        |Persona che ha realizzato un film|      Artista       |               Articolo               |
+| Musicista      |Persona o gruppo di persone che hanno realizzato un album musicale|      Artista       |               Articolo               |
 
 
 &nbsp;
@@ -67,7 +67,7 @@ Le tre generalizzazioni presenti sono state trattate accorpando il genitore dell
 
 &nbsp;
 ## Traduzione verso il modello relazionale:
-- <font color="Green">_Acquisti_album_</font> (<ins>**ID_Acquisto**</ins>, Data acquisto, **Cliente***, **Articolo***, Quantità)
+- _Acquisti_album_ (<ins>**ID_Acquisto**</ins>, Data acquisto, **Cliente***, **Articolo***, Quantità)
 - _Acquisti_film_ (<ins>**ID_Acquisto**</ins>, Data acquisto, **Cliente***, **Articolo***, Quantità)
 - _Album_ (<ins>**ID_Album**</ins>, Nome album, Genere, Anno di pubblicazione, Quantità copie, Prezzo acquisto, Casa Discografica, **Musicista***)
 - _Amministratori_ (<ins>**ID_Amministratore**</ins>, Nome, Cognome, Data di nascita, Mail, Password)

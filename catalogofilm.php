@@ -276,6 +276,7 @@ $cognome=$credenziali['cognome'];
         $queryutente="SELECT Registi.nome, Registi.cognome, Film.nome_film, Film.genere, Film.anno_pubblicazione,Film.produttore,Film.quantita_copie, Film.prezzo_acquisto
  FROM Film join Registi on Film.regista = Registi.id_regista
  ORDER BY Registi.cognome, Film.anno_pubblicazione";
+
         $queryguest="SELECT Registi.nome, Registi.cognome, Film.nome_film, Film.genere, Film.anno_pubblicazione,Film.produttore,Film.quantita_copie
         FROM Film join Registi on Film.regista = Registi.id_regista
  ORDER BY Registi.cognome, Film.anno_pubblicazione";
@@ -320,8 +321,7 @@ $cognome=$credenziali['cognome'];
             echo '<div style="overflow:auto;max-height: 800px;max-width: 1100px; min-width: 1100px">
 <table id="film" class="table table-hover" style="width: 1100px">
 <thead>
-<tr>
-<th scope="col"> REGISTA </th>
+<th scope="col"> REGISTA</th>
 <th scope="col"> NOME</th>
 <th scope="col">GENERE</th>
 <th scope="col">ANNO</th>
@@ -338,7 +338,8 @@ $cognome=$credenziali['cognome'];
                     else{
                         $disp='Non disponibile';
                     }
-                    echo "<tr><th scope='row'>" .$arrute['cognome']. ' ' . $arrute['nome'] . "</th><th scope='row'>" . $arrgue['nome_film'] . "</th><th scope='row' style='alignment: center'>" . $arrgue['genere'] . "</th>
+                    echo "<tr><th scope='row'> " . $arrgue['cognome'] . " " . $arrgue['nome'] . "</th>
+<th scope='row'>" . $arrgue['nome_film'] . "</th><th scope='row' style='alignment: center'>" . $arrgue['genere'] . "</th>
                           <th scope='row'>" . $arrgue['anno_pubblicazione'] . "</th>
                           <th scope='row'>" . $arrgue['produttore'] . "</th>
                           <th scope='row'>". $disp. "</th></tr>";
