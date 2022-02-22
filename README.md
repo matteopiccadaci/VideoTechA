@@ -9,6 +9,7 @@ Il cliente può sottoscrivere la card fedeltà se ha compiuto almeno il 18° ann
 Se l’età del cliente rientra in quella vista sopra, avrà diritto al 10% di sconto su qualunque spesa.
 I due sconti, tuttavia, non sono cumulabili: il cliente dovrà in ogni caso pagare la cifra minore.
 I clienti, se hanno compiuto almeno il 16° di età, potranno autenticarsi tramite codice univoco e password al momento del login al sito. È invece previsto un altro pulsante d’accesso per gli amministratori dell’esercizio, i quali dovranno autenticarsi tramite credenziali. Essi potranno visualizzare gli articoli venduti e le scorte presenti in magazzino.
+La somma dovuta dal cliente verrà pagata nel negozio fisico.
 È anche previsto un accesso in modalità guest, senza alcun tipo di autenticazione, nella quale sarà possibile accedere solamente alle informazioni riguardo l’esercizio e al catalogo degli articoli.
 
 &nbsp;
