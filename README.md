@@ -64,6 +64,7 @@ La somma dovuta dal cliente verrà pagata nel negozio fisico.
 ## Ristrutturazione schema ER:
 Si è dapprima optato per delle valutazioni che aumentassero la qualità del DB, eliminando le eventuali ridondanze presenti.
 Le tre generalizzazioni presenti sono state trattate accorpando il genitore delle generalizzazioni alle figlie.
+L’unica relazione N:N presente era tra le entità Cliente e Articolo, ed è stata successivamente ristrutturata utilizzando una terza entità, Acquisto, come riportato nello schema E-R.
 
 
 &nbsp;
