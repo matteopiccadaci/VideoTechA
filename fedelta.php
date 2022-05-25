@@ -12,13 +12,16 @@ WHERE Clienti.id_cliente='$id'";
     $arr=mysqli_fetch_array($res, MYSQLI_ASSOC);
     $data_t=$arr["data_nascita"];
     $res2=$connex_db->query($queryfedelta);
-    $fedelta=mysqli_fetch_array($res2, MYSQLI_ASSOC);
-    $clientefed=$fedelta['cliente'];
-    $data_t=new DateTime($data['data_nascita']);
-    $data_oggi= new DateTime (date("Y-m-d"));
-    $eta=$data_t->diff($data_oggi)->y;
 
-    ?>
+    $fedelta=mysqli_fetch_array($res2, MYSQLI_ASSOC);
+
+    $clientefed=$fedelta['cliente'];
+    $convertedDate = date_create_from_format("Y-m-d", $data_t);
+    $data_oggi= new DateTime (date("Y-m-d"));
+
+    $eta=$convertedDate->diff($data_oggi)->y;
+
+?>
 
 <!doctype html>
 <html lang="en">
@@ -63,6 +66,9 @@ WHERE Clienti.id_cliente='$id'";
                     <div class="col-md-12">
                         <p>
                             <?php
+
+                            $strTodaysDate = $data_oggi->format("Y-m-d");
+
                             if($id==$clientefed){
                                 echo"Risulti già iscritto al progamma fedeltà di VideoTech-A.";
                             }
@@ -71,10 +77,8 @@ WHERE Clienti.id_cliente='$id'";
                                 echo "Oops... non puoi registrarti se non hai almeno 18 anni.";}
 
                             else{
-                                $queryinsert= "INSERT INTO Fedelta (data_adesione, cliente)
-                 VALUES ('$data_oggi', '$id')";
+                                $queryinsert= "INSERT INTO Fedelta (data_adesione, cliente) VALUES ('$strTodaysDate', '$id')";
                                 if ($inserimento=$connex_db->query($queryinsert)){
-                                    echo "<script>window.location.replace('/fedelta.php')</script>";
                                     echo  'Iscrizione al programma fedeltà di VideoTech-A avvenuto con successo! Ora per ogni acquisto riceverai uno sconto! Grazie per il supporto.';
                                 }
                             }
