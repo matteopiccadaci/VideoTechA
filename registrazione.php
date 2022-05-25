@@ -8,8 +8,8 @@ if (isset($_POST['registrati'])) {
     $cognome = $_POST['cognome'];
     $data= $_POST['data'];
     $pwdLenght = mb_strlen($password);//controllo se la lunghezza della pass è adatta
-    $data_t= explode("-", $data);
-    $eta=(date("md", date("U", mktime(0,0,0, $data_t[2], $data_t[1], $data_t[0]))) > date("md") ? ((date("Y")-$data_t[0])-1) : (date("Y") - $data_t[0]));
+    $eta = floor((time() - strtotime($data)) / 31556926);
+
     if (empty($username) || empty($password) || empty($nome) || empty($cognome) || empty($data)) {
         $msg= 'Compila tutti i campi %s';
     } elseif ($pwdLenght < 4 || $pwdLenght > 20) {
