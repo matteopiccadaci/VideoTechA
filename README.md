@@ -20,7 +20,7 @@ La somma dovuta dal cliente verrà pagata nel negozio fisico.
 | Amministratore | Utente in possesso della maggior parte dei privilegi, che può gestire gli ordini        |       Admin        |             Piattaforma              |
 | Carta Fedeltà  |Tessera su sottoscrizione che permette di accedere ad alcuni sconti|      Fidelity      |               Cliente                |
 | Piattaforma    |Interfaccia utente del DBMS realizzato per l’esercizio|     Gestionale     |    Amministratore, Cliente, Guest    |
-| Cliente        |Utente con possibilità di acquisto e noleggio| Utente Autenticato | Piattaforma, Carta Fedeltà, Acquisto |
+| Cliente        |Utente con possibilità di acquisto | Utente Autenticato | Piattaforma, Carta Fedeltà, Acquisto |
 | Guest          |Utente con limitate possibilità di navigazione all’interno della piattaforma|       Ospite       |             Piattaforma              |
 | Film           |Articolo audiovisivo caratterizzato da alcuni attributi|      Articolo      |          Acquisto, Artista           |
 | Album          |Articolo audio caratterizzato da alcuni attributi|      Articolo      |          Acquisto, Artista           |
